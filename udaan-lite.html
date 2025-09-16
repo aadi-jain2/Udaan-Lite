@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Udaan Lite">
+    <meta name="theme-color" content="#3b82f6">
+    <title>Udaan Lite - Financial Literacy App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { -webkit-tap-highlight-color: transparent; }
+        body { 
+            font-family: 'Inter', system-ui, sans-serif; 
+            font-weight: 500; 
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .mobile-container { max-width: 100vw; margin: 0 auto; }
+        .btn-primary { 
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            font-weight: 600;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 16px;
+            width: 100%;
+        }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-secondary { 
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: white;
+            font-weight: 600;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 16px;
+            width: 100%;
+        }
+        .btn-secondary:active { transform: scale(0.98); }
+        .card { 
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .card:active { transform: scale(0.98); }
+        .nav-item { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            min-width: 60px;
+        }
+        .nav-item.active { 
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+        .page { 
+            min-height: 100vh;
+            padding-bottom: 100px;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .status-bar { height: env(safe-area-inset-top, 20px); }
+        .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50">
+    <div class="status-bar"></div>
+    <div id="app" class="mobile-container">
+        <!-- Landing Page -->
+        <div id="landing" class="page flex flex-col">
+            <!-- Header -->
+            <header class="flex justify-between items-center px-4 py-3 bg-white/80 backdrop-blur-sm">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                        <span class="text-white text-xl">📖</span>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800" id="header-title">Udaan</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg">🌐</span>
+                    <select id="language-selector" class="bg-transparent text-sm text-gray-600 border-none outline-none font-medium" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 flex flex-col items-center justify-center px-4 text-center">
+                <!-- Logo and Tagline -->
+                <div class="mb-8">
+                    <div class="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl relative">
+                        <!-- Open book -->
+                        <div class="text-white text-6xl">📖</div>
+                        <!-- Money symbol on book -->
+                        <div class="absolute -bottom-1 -right-1 text-green-400 text-2xl">💰</div>
+                    </div>
+                    <h1 class="text-4xl font-bold text-gray-800 mb-3" id="app-title">Udaan</h1>
+                    <p class="text-lg text-gray-600 max-w-sm mx-auto leading-relaxed" id="app-tagline">
+                        Learn to Earn - Bridging India's Financial Literacy Gap
+                    </p>
+                </div>
+
+                <!-- Hero Illustration -->
+                <div class="mb-8">
+                    <div class="w-72 h-48 bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl flex items-center justify-center shadow-xl mx-auto">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                                <span class="text-white text-3xl">💰</span>
+                            </div>
+                            <p class="text-base text-gray-600 font-medium">Financial Learning</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access Options -->
+                <div class="space-y-4 w-full max-w-xs mb-6">
+                    <div class="card bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+                        <h3 class="font-bold text-blue-800 mb-3 text-sm" id="access-title">Choose Your Access</h3>
+                        <div class="space-y-2">
+                            <button onclick="showAccessCode()" class="w-full p-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg text-sm font-medium hover:from-blue-600 hover:to-purple-600 transition-all">
+                                🔑 <span id="access-code-btn">Enter Access Code</span>
+                            </button>
+                            <button onclick="startFreeTrial()" class="w-full p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium hover:from-purple-600 hover:to-pink-600 transition-all">
+                                🆓 <span id="free-trial-btn">Free Trial (3 modules)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="space-y-3 w-full max-w-xs">
+                    <button onclick="showPage('modules')" class="btn-primary flex items-center justify-center space-x-2">
+                        <span id="start-learning-btn">Start Learning</span>
+                        <span>→</span>
+                    </button>
+                    <button onclick="showPage('girls-mode')" class="btn-secondary flex items-center justify-center space-x-2">
+                        <span id="womens-mode-btn">Women's Mode</span>
+                        <span>🌸</span>
+                    </button>
+                    <button onclick="showPage('ai-assistant')" class="w-full p-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg text-sm font-medium hover:from-indigo-600 hover:to-purple-600 transition-all flex items-center justify-center space-x-2">
+                        <span id="ai-assistant-btn">AI Assistant</span>
+                        <span>🤖</span>
+                    </button>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="px-4 py-3 text-center">
+                <p class="text-sm text-gray-500" id="footer-text">Empowering financial literacy across India</p>
+            </footer>
+        </div>
+
+        <!-- Learning Modules Page -->
+        <div id="modules" class="hidden page bg-gradient-to-br from-blue-50 to-purple-50 px-4 py-4 pb-24">
+            <div class="max-w-sm mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800 mb-2" id="modules-title">Learning Modules</h1>
+                    <p class="text-gray-600 text-sm" id="modules-subtitle">Master financial literacy step by step</p>
+                </div>
+
+                <!-- Points Display -->
+                <div class="card mb-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">⭐</span>
+                        <span class="font-semibold text-gray-800" id="points">0 Points</span>
+                    </div>
+                    <div class="text-xs text-gray-500">Keep learning!</div>
+                </div>
+
+                <!-- Modules Grid -->
+                <div class="space-y-4">
+                    <div class="card border-green-200 bg-green-50 cursor-pointer" onclick="openModule(1)">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-gray-800 text-base" id="module-1-title">Saving for Festivals</h3>
+                            <span class="text-green-500 text-xl">✓</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3" id="module-1-desc">Learn how to budget and save for special occasions</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-green-600 uppercase tracking-wide" id="module-1-status">completed</span>
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">▶</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-blue-200 bg-blue-50 cursor-pointer" onclick="openModule(2)">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-gray-800 text-base" id="module-2-title">Buying a Scooter</h3>
+                            <span class="text-blue-500 text-xl">▶</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3" id="module-2-desc">Smart purchasing decisions for transportation</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-blue-600 uppercase tracking-wide" id="module-2-status">in progress</span>
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">▶</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-gray-200 bg-gray-50 opacity-60">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-gray-800 text-base" id="module-3-title">Loans 101</h3>
+                            <span class="text-gray-400 text-xl">🔒</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3" id="module-3-desc">Understanding different types of loans and interest</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide" id="module-3-status">locked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Women's Empowerment Mode -->
+        <div id="girls-mode" class="hidden page bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 px-4 py-4 pb-24">
+            <div class="max-w-sm mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 via-rose-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-xl">
+                        <span class="text-white text-3xl">🌸</span>
+                    </div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-2" id="womens-mode-title">Women's Mode</h1>
+                    <p class="text-pink-600 text-sm font-medium" id="womens-mode-subtitle">Empowering women through financial independence</p>
+                </div>
+
+                <!-- Women's Specific Modules -->
+                <div class="card mb-6 bg-gradient-to-r from-pink-100 to-purple-100 border-pink-200">
+                    <h3 class="font-bold text-pink-800 mb-4 text-sm flex items-center justify-center">
+                        <span class="mr-2">👩‍💼</span> <span id="womens-modules-title">Women's Financial Modules</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="card border-pink-200 bg-pink-50 cursor-pointer" onclick="openWomenModule(1)">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-semibold text-gray-800 text-sm" id="womens-module-1-title">Managing Household Budget</h3>
+                                <span class="text-pink-500 text-lg">✓</span>
+                            </div>
+                            <p class="text-gray-600 text-xs mb-3" id="womens-module-1-desc">Learn to manage family finances effectively</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-medium text-pink-600 uppercase tracking-wide" id="womens-module-1-status">completed</span>
+                                <div class="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs">▶</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-purple-200 bg-purple-50 cursor-pointer" onclick="openWomenModule(2)">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-semibold text-gray-800 text-sm">Starting a Small Business</h3>
+                                <span class="text-purple-500 text-lg">▶</span>
+                            </div>
+                            <p class="text-gray-600 text-xs mb-3">Turn your skills into income</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-medium text-purple-600 uppercase tracking-wide">in progress</span>
+                                <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs">▶</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-rose-200 bg-rose-50 cursor-pointer" onclick="openWomenModule(3)">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-semibold text-gray-800 text-sm">Saving for Children's Education</h3>
+                                <span class="text-rose-500 text-lg">▶</span>
+                            </div>
+                            <p class="text-gray-600 text-xs mb-3">Plan for your children's future</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-medium text-rose-600 uppercase tracking-wide">available</span>
+                                <div class="w-6 h-6 bg-rose-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs">▶</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Motivation -->
+                <div class="card mb-6 bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 border-pink-200 shadow-lg">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-white text-2xl">🌟</span>
+                        </div>
+                        <h3 class="font-bold text-pink-800 mb-2 text-sm">Today's Inspiration</h3>
+                        <p class="text-pink-700 italic text-sm leading-relaxed font-medium">"Financial independence gives you the power to make choices for yourself and your family. Every rupee saved is a step towards freedom."</p>
+                    </div>
+                </div>
+
+                <!-- Progress Tracker -->
+                <div class="card mb-6 bg-gradient-to-r from-pink-100 to-purple-100 border-pink-200">
+                    <h3 class="font-bold text-pink-800 mb-3 text-sm flex items-center justify-center">
+                        <span class="mr-2">📊</span> Your Learning Progress
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-pink-500 text-lg">📚</span>
+                                <span class="text-gray-700 text-xs font-medium">Modules Completed</span>
+                            </div>
+                            <span class="text-purple-600 font-bold text-sm" id="women-modules">0/3</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-500 text-lg">💎</span>
+                                <span class="text-gray-700 text-xs font-medium">Points Earned</span>
+                            </div>
+                            <span class="text-pink-600 font-bold text-sm" id="women-points">0</span>
+                        </div>
+                        <div class="w-full bg-pink-200 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-2 rounded-full transition-all duration-500" style="width: 0%" id="women-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practical Financial Tips -->
+                <div class="card mb-6 bg-gradient-to-br from-blue-100 to-green-100 border-blue-200">
+                    <h3 class="font-bold text-blue-800 mb-4 text-sm flex items-center justify-center">
+                        <span class="mr-2">💡</span> Practical Money Tips
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-sm">💰</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-700 text-xs font-medium">Save 20% of your income every month</p>
+                                <p class="text-green-600 text-xs">Build an emergency fund for your family</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-sm">📝</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-700 text-xs font-medium">Keep track of all expenses</p>
+                                <p class="text-blue-600 text-xs">Know where your money goes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-green-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-sm">🎯</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-700 text-xs font-medium">Set realistic financial goals</p>
+                                <p class="text-purple-600 text-xs">Plan for your children's education</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inspiring Women -->
+                <div class="card mb-6 bg-gradient-to-br from-green-100 to-blue-100 border-green-200">
+                    <h2 class="font-bold text-green-800 mb-4 text-sm flex items-center justify-center">
+                        <span class="mr-2">👩‍💼</span> Inspiring Women Leaders
+                    </h2>
+                    
+                    <!-- Kiran Mazumdar-Shaw -->
+                    <div class="space-y-3 mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-blue-400 rounded-2xl flex items-center justify-center shadow-lg">
+                                <span class="text-white text-xl">👩‍🔬</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Kiran Mazumdar-Shaw</h3>
+                                <p class="text-green-600 font-medium text-xs">Biotechnology Pioneer</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">
+                            Started Biocon with just ₹10,000 in 1978. Today, she's one of India's richest women, proving that determination and smart financial decisions can overcome any challenge.
+                        </p>
+                        <div class="bg-gradient-to-r from-green-100 to-blue-100 rounded-xl p-3 border border-green-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-green-500 text-sm">💪</span>
+                                <span class="font-bold text-gray-800 text-xs">Her Achievement:</span>
+                            </div>
+                            <p class="text-gray-700 text-xs mt-1">Built India's largest biotech company from scratch</p>
+                        </div>
+                    </div>
+
+                    <!-- Falguni Nayar -->
+                    <div class="space-y-3 mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl flex items-center justify-center shadow-lg">
+                                <span class="text-white text-xl">💼</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Falguni Nayar</h3>
+                                <p class="text-blue-600 font-medium text-xs">E-commerce Entrepreneur</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">
+                            Left her successful banking career at 50 to start Nykaa. She shows that it's never too late to follow your dreams and build something meaningful.
+                        </p>
+                        <div class="bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl p-3 border border-blue-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-blue-500 text-sm">🚀</span>
+                                <span class="font-bold text-gray-800 text-xs">Her Success:</span>
+                            </div>
+                            <p class="text-gray-700 text-xs mt-1">Created India's leading beauty e-commerce platform</p>
+                        </div>
+                    </div>
+
+                    <!-- Radhika Gupta -->
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-green-400 rounded-2xl flex items-center justify-center shadow-lg">
+                                <span class="text-white text-xl">📈</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Radhika Gupta</h3>
+                                <p class="text-purple-600 font-medium text-xs">Investment Expert</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">
+                            CEO of Edelweiss Asset Management and a strong advocate for women's financial empowerment. She writes extensively about smart money management.
+                        </p>
+                        <div class="bg-gradient-to-r from-purple-100 to-green-100 rounded-xl p-3 border border-purple-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-500 text-sm">📚</span>
+                                <span class="font-bold text-gray-800 text-xs">Her Mission:</span>
+                            </div>
+                            <p class="text-gray-700 text-xs mt-1">Empowering women through financial education</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Goals -->
+                <div class="card mb-6 bg-gradient-to-br from-green-100 to-blue-100 border-green-200">
+                    <h3 class="font-bold text-green-800 mb-4 text-sm flex items-center justify-center">
+                        <span class="mr-2">🎯</span> Your Financial Goals
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-green-500 text-lg">🏠</span>
+                                <span class="text-gray-700 text-xs font-medium">Emergency fund</span>
+                            </div>
+                            <span class="text-green-500 text-xs font-bold">₹10,000</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-blue-500 text-lg">👶</span>
+                                <span class="text-gray-700 text-xs font-medium">Children's education</span>
+                            </div>
+                            <span class="text-blue-500 text-xs font-bold">₹50,000</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-purple-50 to-green-50 rounded-xl border border-purple-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-500 text-lg">🚗</span>
+                                <span class="text-gray-700 text-xs font-medium">Family vehicle</span>
+                            </div>
+                            <span class="text-purple-500 text-xs font-bold">₹2,00,000</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-green-500 text-lg">🏡</span>
+                                <span class="text-gray-700 text-xs font-medium">Home ownership</span>
+                            </div>
+                            <span class="text-green-500 text-xs font-bold">₹5,00,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Rewards -->
+                <div class="card mb-6 bg-gradient-to-br from-blue-100 to-green-100 border-blue-200">
+                    <h3 class="font-bold text-blue-800 mb-4 text-sm flex items-center justify-center">
+                        <span class="mr-2">🏆</span> Achievement Rewards
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-green-500 text-sm">🌟</span>
+                                <span class="text-gray-700 text-xs">Financial Learner</span>
+                            </div>
+                            <span class="text-green-500 text-xs font-bold">Complete 1 module</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-blue-500 text-sm">💪</span>
+                                <span class="text-gray-700 text-xs">Smart Saver</span>
+                            </div>
+                            <span class="text-blue-500 text-xs font-bold">Complete 2 modules</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gradient-to-r from-purple-50 to-green-50 rounded-lg">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-500 text-sm">👑</span>
+                                <span class="text-gray-700 text-xs">Financial Expert</span>
+                            </div>
+                            <span class="text-purple-500 text-xs font-bold">Complete all modules</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Support -->
+                <div class="card bg-gradient-to-br from-green-100 to-blue-100 border-green-200">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-300 to-blue-300 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                            <span class="text-green-600 text-2xl">🤝</span>
+                        </div>
+                        <h3 class="font-bold text-green-800 mb-2 text-sm">Women's Support Network</h3>
+                        <p class="text-green-600 mb-3 text-xs">
+                            Connect with other women on their financial journey. Share experiences, ask questions, and support each other in building financial independence.
+                        </p>
+                        <div class="bg-gradient-to-r from-green-200 to-blue-200 rounded-xl p-3 border border-green-300">
+                            <p class="text-xs text-green-700 font-bold">Coming Soon</p>
+                            <p class="text-xs text-green-600 mt-1">
+                                A supportive community for women to discuss financial matters
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rewards Page -->
+        <div id="rewards" class="hidden page bg-gradient-to-br from-orange-50 to-blue-50 px-4 py-4 pb-24">
+            <div class="max-w-sm mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <div class="flex items-center justify-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                            <span class="text-white text-xl">🎁</span>
+                        </div>
+                        <h1 class="text-2xl font-bold text-gray-800">Points & Rewards</h1>
+                    </div>
+                    <p class="text-gray-600 text-sm">Your learning journey, your rewards ✨</p>
+                </div>
+
+                <!-- Points Profile Card -->
+                <div class="card mb-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-blue-400 rounded-3xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">🏆</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">Your Progress</h2>
+                        <div class="flex items-center justify-center space-x-2 mb-4">
+                            <span class="text-xl">⭐</span>
+                            <span class="text-2xl font-bold text-gray-800" id="rewards-points">0</span>
+                            <span class="text-gray-600 text-sm">Points</span>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between text-xs text-gray-600 mb-2">
+                                <span>Progress to next reward</span>
+                                <span>0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-orange-400 to-blue-400 h-2 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-r from-orange-50 to-blue-50 rounded-xl p-3">
+                            <p class="text-xs text-gray-600 mb-1">Next Reward</p>
+                            <p class="font-semibold text-gray-800 text-sm">₹1 Voucher</p>
+                            <p class="text-xs text-gray-600">10 more points needed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rewards -->
+                <div class="space-y-3">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Available Rewards</h3>
+                    
+                    <div class="card border-gray-200 bg-gray-50">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gray-300 rounded-xl flex items-center justify-center">
+                                    <span class="text-white text-lg">🎁</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 text-sm">₹1 Voucher</h4>
+                                    <p class="text-xs text-gray-600">Small reward for your progress</p>
+                                    <div class="flex items-center space-x-1 mt-1">
+                                        <span class="text-lg">⭐</span>
+                                        <span class="text-xs font-medium text-gray-700">10 points</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs text-gray-500">Need 10 more</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-gray-200 bg-gray-50">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gray-300 rounded-xl flex items-center justify-center">
+                                    <span class="text-white text-lg">🎁</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 text-sm">Discount Coupon</h4>
+                                    <p class="text-xs text-gray-600">Save on your next purchase</p>
+                                    <div class="flex items-center space-x-1 mt-1">
+                                        <span class="text-lg">⭐</span>
+                                        <span class="text-xs font-medium text-gray-700">30 points</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs text-gray-500">Need 30 more</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-gray-200 bg-gray-50">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gray-300 rounded-xl flex items-center justify-center">
+                                    <span class="text-white text-lg">🎁</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 text-sm">Premium Content</h4>
+                                    <p class="text-xs text-gray-600">Unlock advanced lessons</p>
+                                    <div class="flex items-center space-x-1 mt-1">
+                                        <span class="text-lg">⭐</span>
+                                        <span class="text-xs font-medium text-gray-700">50 points</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs text-gray-500">Need 50 more</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Badges -->
+                <div class="card mt-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Achievements</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="text-center p-3 bg-gradient-to-r from-orange-50 to-blue-50 rounded-xl border border-orange-200">
+                            <div class="text-2xl mb-1">👶</div>
+                            <p class="text-xs font-medium text-gray-800">First Steps</p>
+                            <p class="text-xs text-gray-500">Earn 10 points</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="text-2xl mb-1">⚡</div>
+                            <p class="text-xs font-medium text-gray-500">Quick Learner</p>
+                            <p class="text-xs text-gray-400">Earn 30 points</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="text-2xl mb-1">🎯</div>
+                            <p class="text-xs font-medium text-gray-500">Dedicated</p>
+                            <p class="text-xs text-gray-400">Earn 50 points</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="text-2xl mb-1">🏆</div>
+                            <p class="text-xs font-medium text-gray-500">Expert</p>
+                            <p class="text-xs text-gray-400">Earn 100 points</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 px-2 py-3 z-50 safe-area-bottom">
+            <div class="flex justify-around items-center max-w-sm mx-auto">
+                <button onclick="showPage('landing')" class="nav-item active text-blue-600 flex-1">
+                    <span class="text-xl">🏠</span>
+                    <span class="text-xs mt-1 font-medium" id="nav-home">Home</span>
+                </button>
+                <button onclick="showPage('modules')" class="nav-item text-gray-500 flex-1">
+                    <span class="text-xl">📚</span>
+                    <span class="text-xs mt-1 font-medium" id="nav-modules">Modules</span>
+                </button>
+                <button onclick="showPage('girls-mode')" class="nav-item text-gray-500 flex-1">
+                    <span class="text-xl">🌸</span>
+                    <span class="text-xs mt-1 font-medium" id="nav-women">Women</span>
+                </button>
+                <button onclick="showPage('leaderboard')" class="nav-item text-gray-500 flex-1">
+                    <span class="text-xl">🏆</span>
+                    <span class="text-xs mt-1 font-medium" id="nav-rankings">Rankings</span>
+                </button>
+                <button onclick="showPage('rewards')" class="nav-item text-gray-500 flex-1">
+                    <span class="text-xl">🎁</span>
+                    <span class="text-xs mt-1 font-medium" id="nav-rewards">Rewards</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Page -->
+        <div id="leaderboard" class="hidden page bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 px-4 py-4 pb-24">
+            <div class="max-w-sm mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-xl">
+                        <span class="text-white text-3xl">🏆</span>
+                    </div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-yellow-600 to-red-600 bg-clip-text text-transparent mb-2" id="leaderboard-title">Leaderboard</h1>
+                    <p class="text-orange-600 text-sm font-medium" id="leaderboard-subtitle">Compete with other learners and win rewards!</p>
+                </div>
+
+                <!-- Your Rank -->
+                <div class="card mb-6 bg-gradient-to-r from-yellow-100 to-orange-100 border-yellow-200">
+                    <h3 class="font-bold text-yellow-800 mb-3 text-sm flex items-center justify-center">
+                        <span class="mr-2">👤</span> <span id="your-rank">Your Current Rank</span>
+                    </h3>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-white text-2xl font-bold" id="user-rank">#1</span>
+                        </div>
+                        <p class="text-yellow-800 font-bold text-lg" id="user-name">You</p>
+                        <p class="text-orange-600 text-sm" id="user-score">0 Points</p>
+                    </div>
+                </div>
+
+                <!-- Top Performers -->
+                <div class="card mb-6 bg-gradient-to-r from-orange-100 to-red-100 border-orange-200">
+                    <h3 class="font-bold text-orange-800 mb-4 text-sm flex items-center justify-center">
+                        <span class="mr-2">🌟</span> <span id="top-performers">Top Performers</span>
+                    </h3>
+                    <div class="space-y-3" id="leaderboard-list">
+                        <!-- Leaderboard entries will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Incentives -->
+                <div class="card mb-6 bg-gradient-to-r from-red-100 to-pink-100 border-red-200">
+                    <h3 class="font-bold text-red-800 mb-4 text-sm flex items-center justify-center">
+                        <span class="mr-2">🎁</span> <span id="monthly-incentives">Monthly Incentives</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border border-yellow-200">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🥇</span>
+                                <div>
+                                    <p class="font-semibold text-yellow-800 text-sm" id="1st-place">1st Place</p>
+                                    <p class="text-yellow-600 text-xs">₹500 <span id="cash-prize">Cash Prize</span></p>
+                                </div>
+                            </div>
+                            <span class="text-yellow-600 font-bold text-sm">Top 1</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🥈</span>
+                                <div>
+                                    <p class="font-semibold text-gray-700 text-sm" id="2nd-place">2nd Place</p>
+                                    <p class="text-gray-600 text-xs">₹300 <span id="cash-prize-2">Cash Prize</span></p>
+                                </div>
+                            </div>
+                            <span class="text-gray-600 font-bold text-sm">Top 2</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl border border-orange-200">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🥉</span>
+                                <div>
+                                    <p class="font-semibold text-orange-700 text-sm" id="3rd-place">3rd Place</p>
+                                    <p class="text-orange-600 text-xs">₹200 <span id="cash-prize-3">Cash Prize</span></p>
+                                </div>
+                            </div>
+                            <span class="text-orange-600 font-bold text-sm">Top 3</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🏅</span>
+                                <div>
+                                    <p class="font-semibold text-blue-700 text-sm" id="top-10">Top 10</p>
+                                    <p class="text-blue-600 text-xs">₹100 <span id="cash-prize-4">Cash Prize</span></p>
+                                </div>
+                            </div>
+                            <span class="text-blue-600 font-bold text-sm">Top 10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Stats -->
+                <div class="card mb-6 bg-gradient-to-r from-green-100 to-blue-100 border-green-200">
+                    <h3 class="font-bold text-green-800 mb-3 text-sm flex items-center justify-center">
+                        <span class="mr-2">📊</span> <span id="monthly-stats">This Month's Stats</span>
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-green-600" id="monthly-points">0</p>
+                            <p class="text-green-700 text-xs" id="points-earned-monthly">Points Earned</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-blue-600" id="monthly-modules">0</p>
+                            <p class="text-blue-700 text-xs" id="modules-completed-monthly">Modules Completed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Assistant Page -->
+        <div id="ai-assistant" class="hidden page bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50 px-4 py-4 pb-24">
+            <div class="max-w-sm mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 shadow-xl">
+                        <span class="text-white text-3xl">🤖</span>
+                    </div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2" id="ai-title">AI Assistant</h1>
+                    <p class="text-indigo-600 text-sm font-medium" id="ai-subtitle">Your personal financial advisor</p>
+                </div>
+
+                <!-- Chat Interface -->
+                <div class="card mb-6 bg-white shadow-lg">
+                    <div class="h-64 overflow-y-auto p-4 space-y-3" id="chat-messages">
+                        <div class="flex items-start space-x-2">
+                            <div class="w-8 h-8 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-sm">🤖</span>
+                            </div>
+                            <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                                <p class="text-gray-700 text-xs" id="ai-welcome">Hello! I'm your AI financial assistant. I can help you with:</p>
+                                <ul class="text-gray-600 text-xs mt-2 space-y-1">
+                                    <li id="ai-help-1">• Budgeting advice</li>
+                                    <li id="ai-help-2">• Saving strategies</li>
+                                    <li id="ai-help-3">• Investment basics</li>
+                                    <li id="ai-help-4">• Loan information</li>
+                                </ul>
+                                <p class="text-gray-700 text-xs mt-2" id="ai-question">What would you like to know?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Questions -->
+                <div class="card mb-6 bg-gradient-to-r from-indigo-100 to-purple-100 border-indigo-200">
+                    <h3 class="font-bold text-indigo-800 mb-3 text-sm flex items-center justify-center">
+                        <span class="mr-2">💬</span> Quick Questions
+                    </h3>
+                    <div class="space-y-2">
+                        <button onclick="askAI('How do I start saving money?')" class="w-full text-left p-2 bg-white rounded-lg text-xs text-gray-700 hover:bg-indigo-50 transition-colors">
+                            💰 How do I start saving money?
+                        </button>
+                        <button onclick="askAI('What is a good emergency fund amount?')" class="w-full text-left p-2 bg-white rounded-lg text-xs text-gray-700 hover:bg-indigo-50 transition-colors">
+                            🏠 What is a good emergency fund amount?
+                        </button>
+                        <button onclick="askAI('How can I reduce my expenses?')" class="w-full text-left p-2 bg-white rounded-lg text-xs text-gray-700 hover:bg-indigo-50 transition-colors">
+                            📉 How can I reduce my expenses?
+                        </button>
+                        <button onclick="askAI('What are the basics of investing?')" class="w-full text-left p-2 bg-white rounded-lg text-xs text-gray-700 hover:bg-indigo-50 transition-colors">
+                            📈 What are the basics of investing?
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="card bg-white shadow-lg">
+                    <div class="flex space-x-2">
+                        <input 
+                            type="text" 
+                            id="user-input" 
+                            placeholder="Ask me anything about finance..."
+                            class="flex-1 p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500"
+                            onkeypress="handleKeyPress(event)"
+                        />
+                        <button onclick="sendMessage()" class="px-4 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-all">
+                            <span class="text-sm">Send</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI Tips -->
+                <div class="card mt-6 bg-gradient-to-r from-purple-100 to-indigo-100 border-purple-200">
+                    <h3 class="font-bold text-purple-800 mb-3 text-sm flex items-center justify-center">
+                        <span class="mr-2">💡</span> AI Tips
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex items-start space-x-2">
+                            <span class="text-purple-500 text-sm">🎯</span>
+                            <p class="text-gray-700 text-xs">Be specific with your questions for better answers</p>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <span class="text-indigo-500 text-sm">📊</span>
+                            <p class="text-gray-700 text-xs">Ask about your specific financial situation</p>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <span class="text-purple-500 text-sm">🔄</span>
+                            <p class="text-gray-700 text-xs">Follow up with more questions if needed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module Detail Modal -->
+        <div id="module-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl p-6 max-w-sm w-full max-h-[80vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-800" id="module-title">Module Title</h2>
+                    <button onclick="closeModule()" class="p-2 hover:bg-gray-100 rounded-xl transition-colors">
+                        <span class="text-gray-600 text-xl">×</span>
+                    </button>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-3">Lesson Content</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm" id="module-content">Module content will appear here...</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-3">Quick Quiz</h3>
+                        <div class="bg-gray-50 rounded-xl p-4">
+                            <p class="font-medium text-gray-800 mb-4 text-sm" id="quiz-question">Quiz question will appear here...</p>
+                            <div class="space-y-2" id="quiz-options">
+                                <!-- Quiz options will be added here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="quiz-result" class="hidden p-4 rounded-xl">
+                        <!-- Quiz result will appear here -->
+                    </div>
+
+                    <button onclick="completeModule()" id="complete-btn" class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed">
+                        Complete Module
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Access Code Modal -->
+        <div id="access-code-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl p-6 max-w-sm w-full">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white text-2xl">🔑</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">Enter Access Code</h2>
+                    <p class="text-gray-600 text-sm">Enter your access code to unlock all modules</p>
+                </div>
+
+                <div class="space-y-4">
+                    <input 
+                        type="text" 
+                        id="access-code-input" 
+                        placeholder="Enter your access code..."
+                        class="w-full p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-green-500"
+                        maxlength="8"
+                    />
+                    <div class="flex space-x-3">
+                        <button onclick="closeAccessCode()" class="flex-1 p-3 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors">
+                            Cancel
+                        </button>
+                        <button onclick="verifyAccessCode()" class="flex-1 p-3 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg text-sm font-medium hover:from-green-600 hover:to-blue-600 transition-all">
+                            Verify
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 text-center">
+                        Demo codes: <strong>UDAAAN1</strong> or <strong>WOMEN01</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 'landing';
+        let points = 0;
+        let completedModules = 0;
+        let currentModule = null;
+        let selectedQuizAnswer = null;
+        let showQuizResult = false;
+        let hasAccess = false;
+        let freeTrialUsed = false;
+        let monthlyPoints = 0;
+        let monthlyModules = 0;
+        let currentLanguage = 'en';
+
+        // Language translations
+        const translations = {
+            en: {
+                'app-title': 'Udaan',
+                'app-tagline': 'Learn to Earn - Bridging India\'s Financial Literacy Gap',
+                'header-title': 'Udaan',
+                'access-title': 'Choose Your Access',
+                'access-code-btn': 'Enter Access Code',
+                'free-trial-btn': 'Free Trial (3 modules)',
+                'start-learning-btn': 'Start Learning',
+                'womens-mode-btn': 'Women\'s Mode',
+                'ai-assistant-btn': 'AI Assistant',
+                'nav-home': 'Home',
+                'nav-modules': 'Modules',
+                'nav-women': 'Women',
+                'nav-rankings': 'Rankings',
+                'nav-rewards': 'Rewards',
+                'footer-text': 'Empowering financial literacy across India',
+                // Modules page
+                'modules-title': 'Learning Modules',
+                'modules-subtitle': 'Master financial literacy step by step',
+                'module-1-title': 'Saving for Festivals',
+                'module-1-desc': 'Learn to budget for special occasions',
+                'module-2-title': 'Buying a Scooter',
+                'module-2-desc': 'Make smart transportation choices',
+                'module-3-title': 'Loans 101',
+                'module-3-desc': 'Understand borrowing basics',
+                'module-completed': 'completed',
+                'module-in-progress': 'in progress',
+                'module-available': 'available',
+                'module-locked': 'locked',
+                // Women's mode
+                'womens-mode-title': 'Women\'s Mode',
+                'womens-mode-subtitle': 'Empowering women through financial independence',
+                'womens-modules-title': 'Women\'s Financial Modules',
+                'womens-module-1-title': 'Managing Household Budget',
+                'womens-module-1-desc': 'Learn to manage family finances effectively',
+                'womens-module-2-title': 'Starting a Small Business',
+                'womens-module-2-desc': 'Turn your skills into income',
+                'womens-module-3-title': 'Saving for Children\'s Education',
+                'womens-module-3-desc': 'Plan for your children\'s future',
+                'daily-inspiration': 'Today\'s Inspiration',
+                'learning-progress': 'Your Learning Progress',
+                'modules-completed': 'Modules Completed',
+                'points-earned': 'Points Earned',
+                'practical-tips': 'Practical Money Tips',
+                'inspiring-women': 'Inspiring Women Leaders',
+                'financial-goals': 'Your Financial Goals',
+                'support-network': 'Women\'s Support Network',
+                // Leaderboard
+                'leaderboard-title': 'Leaderboard',
+                'leaderboard-subtitle': 'Compete with other learners and win rewards!',
+                'your-rank': 'Your Current Rank',
+                'top-performers': 'Top Performers',
+                'monthly-incentives': 'Monthly Incentives',
+                '1st-place': '1st Place',
+                '2nd-place': '2nd Place',
+                '3rd-place': '3rd Place',
+                'top-10': 'Top 10',
+                'cash-prize': 'Cash Prize',
+                'monthly-stats': 'This Month\'s Stats',
+                'points-earned-monthly': 'Points Earned',
+                'modules-completed-monthly': 'Modules Completed',
+                // Rewards
+                'rewards-title': 'Points & Rewards',
+                'rewards-subtitle': 'Earn points and redeem exciting rewards',
+                'total-points': 'Total Points',
+                'available-rewards': 'Available Rewards',
+                'redeem': 'Redeem',
+                // AI Assistant
+                'ai-title': 'AI Assistant',
+                'ai-subtitle': 'Your personal financial advisor',
+                'ai-welcome': 'Hello! I\'m your AI financial assistant. I can help you with:',
+                'ai-help-1': 'Budgeting advice',
+                'ai-help-2': 'Saving strategies',
+                'ai-help-3': 'Investment basics',
+                'ai-help-4': 'Loan information',
+                'ai-help-5': 'Financial planning',
+                'ai-help-6': 'And much more!',
+                'ai-question': 'Ask me anything about money!',
+                'ai-send': 'Send',
+                'ai-tips': 'AI Tips',
+                'ai-tip-1': 'Be specific with your questions',
+                'ai-tip-2': 'Ask about your financial goals',
+                'ai-tip-3': 'Follow up with more questions if needed',
+                // Additional translations
+                'cash-prize-2': 'Cash Prize',
+                'cash-prize-3': 'Cash Prize',
+                'cash-prize-4': 'Cash Prize'
+            },
+            hi: {
+                'app-title': 'उड़ान',
+                'app-tagline': 'सीखें कमाने के लिए - भारत की वित्तीय साक्षरता को बढ़ावा देना',
+                'header-title': 'उड़ान',
+                'access-title': 'अपना एक्सेस चुनें',
+                'access-code-btn': 'एक्सेस कोड दर्ज करें',
+                'free-trial-btn': 'मुफ्त ट्रायल (3 मॉड्यूल)',
+                'start-learning-btn': 'सीखना शुरू करें',
+                'womens-mode-btn': 'महिला मोड',
+                'ai-assistant-btn': 'AI सहायक',
+                'nav-home': 'होम',
+                'nav-modules': 'मॉड्यूल',
+                'nav-women': 'महिलाएं',
+                'nav-rankings': 'रैंकिंग',
+                'nav-rewards': 'इनाम',
+                'footer-text': 'भारत में वित्तीय साक्षरता को बढ़ावा देना',
+                // Modules page
+                'modules-title': 'सीखने के मॉड्यूल',
+                'modules-subtitle': 'वित्तीय साक्षरता में महारत हासिल करें',
+                'module-1-title': 'त्योहारों के लिए बचत',
+                'module-1-desc': 'विशेष अवसरों के लिए बजट बनाना सीखें',
+                'module-2-title': 'स्कूटर खरीदना',
+                'module-2-desc': 'स्मार्ट परिवहन विकल्प बनाएं',
+                'module-3-title': 'लोन की बुनियादी बातें',
+                'module-3-desc': 'उधार की मूल बातें समझें',
+                'module-completed': 'पूर्ण',
+                'module-in-progress': 'प्रगति में',
+                'module-available': 'उपलब्ध',
+                'module-locked': 'बंद',
+                // Women's mode
+                'womens-mode-title': 'महिला मोड',
+                'womens-mode-subtitle': 'वित्तीय आजादी के माध्यम से महिलाओं को सशक्त बनाना',
+                'womens-modules-title': 'महिलाओं के वित्तीय मॉड्यूल',
+                'womens-module-1-title': 'घरेलू बजट प्रबंधन',
+                'womens-module-1-desc': 'पारिवारिक वित्त का प्रभावी प्रबंधन सीखें',
+                'womens-module-2-title': 'छोटा व्यवसाय शुरू करना',
+                'womens-module-2-desc': 'अपने कौशल को आय में बदलें',
+                'womens-module-3-title': 'बच्चों की शिक्षा के लिए बचत',
+                'womens-module-3-desc': 'अपने बच्चों के भविष्य की योजना बनाएं',
+                'daily-inspiration': 'आज की प्रेरणा',
+                'learning-progress': 'आपकी सीखने की प्रगति',
+                'modules-completed': 'पूर्ण मॉड्यूल',
+                'points-earned': 'अर्जित अंक',
+                'practical-tips': 'व्यावहारिक पैसे की सलाह',
+                'inspiring-women': 'प्रेरणादायक महिला नेता',
+                'financial-goals': 'आपके वित्तीय लक्ष्य',
+                'support-network': 'महिला सहायता नेटवर्क',
+                // Leaderboard
+                'leaderboard-title': 'लीडरबोर्ड',
+                'leaderboard-subtitle': 'अन्य सीखने वालों के साथ प्रतिस्पर्धा करें और इनाम जीतें!',
+                'your-rank': 'आपकी वर्तमान रैंक',
+                'top-performers': 'शीर्ष प्रदर्शनकर्ता',
+                'monthly-incentives': 'मासिक प्रोत्साहन',
+                '1st-place': 'प्रथम स्थान',
+                '2nd-place': 'द्वितीय स्थान',
+                '3rd-place': 'तृतीय स्थान',
+                'top-10': 'शीर्ष 10',
+                'cash-prize': 'नकद पुरस्कार',
+                'monthly-stats': 'इस महीने के आंकड़े',
+                'points-earned-monthly': 'अर्जित अंक',
+                'modules-completed-monthly': 'पूर्ण मॉड्यूल',
+                // Rewards
+                'rewards-title': 'अंक और इनाम',
+                'rewards-subtitle': 'अंक अर्जित करें और रोमांचक इनाम प्राप्त करें',
+                'total-points': 'कुल अंक',
+                'available-rewards': 'उपलब्ध इनाम',
+                'redeem': 'प्राप्त करें',
+                // AI Assistant
+                'ai-title': 'AI सहायक',
+                'ai-subtitle': 'आपका व्यक्तिगत वित्तीय सलाहकार',
+                'ai-welcome': 'नमस्ते! मैं आपका AI वित्तीय सहायक हूं। मैं आपकी इनमें मदद कर सकता हूं:',
+                'ai-help-1': 'बजट सलाह',
+                'ai-help-2': 'बचत रणनीतियां',
+                'ai-help-3': 'निवेश की बुनियादी बातें',
+                'ai-help-4': 'लोन जानकारी',
+                'ai-help-5': 'वित्तीय योजना',
+                'ai-help-6': 'और भी बहुत कुछ!',
+                'ai-question': 'पैसे के बारे में कुछ भी पूछें!',
+                'ai-send': 'भेजें',
+                'ai-tips': 'AI सुझाव',
+                'ai-tip-1': 'अपने सवालों में विशिष्ट रहें',
+                'ai-tip-2': 'अपने वित्तीय लक्ष्यों के बारे में पूछें',
+                'ai-tip-3': 'आवश्यकता हो तो और सवाल पूछें',
+                // Additional translations
+                'cash-prize-2': 'नकद पुरस्कार',
+                'cash-prize-3': 'नकद पुरस्कार',
+                'cash-prize-4': 'नकद पुरस्कार'
+            }
+        };
+
+        function changeLanguage() {
+            const selector = document.getElementById('language-selector');
+            currentLanguage = selector.value;
+            
+            // Update all text elements
+            Object.keys(translations[currentLanguage]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+            
+            // Update module statuses dynamically
+            const module1Status = document.getElementById('module-1-status');
+            const module2Status = document.getElementById('module-2-status');
+            const module3Status = document.getElementById('module-3-status');
+            
+            if (module1Status && module1Status.textContent.includes('completed')) {
+                module1Status.textContent = translations[currentLanguage]['module-completed'];
+            }
+            if (module2Status && module2Status.textContent.includes('progress')) {
+                module2Status.textContent = translations[currentLanguage]['module-in-progress'];
+            }
+            if (module3Status && module3Status.textContent.includes('locked')) {
+                module3Status.textContent = translations[currentLanguage]['module-locked'];
+            }
+            
+            // Update women's module statuses
+            const womenModule1Status = document.getElementById('womens-module-1-status');
+            if (womenModule1Status && womenModule1Status.textContent.includes('completed')) {
+                womenModule1Status.textContent = translations[currentLanguage]['module-completed'];
+            }
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('[id="landing"], [id="modules"], [id="girls-mode"], [id="leaderboard"], [id="rewards"], [id="ai-assistant"]').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active', 'text-blue-600');
+                item.classList.add('text-gray-500');
+            });
+            
+            event.target.closest('.nav-item').classList.add('active', 'text-blue-600');
+            event.target.closest('.nav-item').classList.remove('text-gray-500');
+            
+            currentPage = pageId;
+            
+            // Update Princess Mode if it's the current page
+            if (pageId === 'girls-mode') {
+                updatePrincessMode();
+            }
+            
+            // Update Leaderboard if it's the current page
+            if (pageId === 'leaderboard') {
+                updateLeaderboard();
+            }
+        }
+
+        // Access Code Functions
+        function showAccessCode() {
+            document.getElementById('access-code-modal').classList.remove('hidden');
+        }
+
+        function closeAccessCode() {
+            document.getElementById('access-code-modal').classList.add('hidden');
+            document.getElementById('access-code-input').value = '';
+        }
+
+        function verifyAccessCode() {
+            const code = document.getElementById('access-code-input').value.toUpperCase();
+            const validCodes = ['UDAAAN1', 'WOMEN01', 'ACCESS1'];
+            
+            if (validCodes.includes(code)) {
+                hasAccess = true;
+                closeAccessCode();
+                showSuccessMessage('Access granted! All modules are now unlocked! 🎉');
+            } else {
+                showErrorMessage('Invalid access code. Please try again.');
+            }
+        }
+
+        function startFreeTrial() {
+            if (freeTrialUsed) {
+                showErrorMessage('Free trial already used. Please enter an access code.');
+                return;
+            }
+            freeTrialUsed = true;
+            hasAccess = true;
+            showSuccessMessage('Free trial started! You can access 3 modules. 🆓');
+        }
+
+        // Module Functions
+        function openModule(moduleId) {
+            if (!hasAccess && !freeTrialUsed) {
+                showErrorMessage('Please choose an access method first.');
+                return;
+            }
+            
+            if (freeTrialUsed && moduleId > 3) {
+                showErrorMessage('Free trial limited to 3 modules. Enter access code for more.');
+                return;
+            }
+
+            const modules = {
+                1: {
+                    title: 'Saving for Festivals',
+                    content: 'Festivals are an important part of our culture, but they can also be expensive. Learning to save for festivals helps you enjoy these special moments without financial stress. Start by setting aside a small amount each month specifically for festival expenses. This way, when the time comes, you\'ll have the money ready and won\'t need to borrow or compromise on other expenses.',
+                    questions: [
+                        {
+                            question: 'What is the best way to save for festivals?',
+                            options: ['Save all money at once', 'Set aside small amounts monthly', 'Borrow money when needed', 'Skip festivals'],
+                            correct: 1
+                        },
+                        {
+                            question: 'How much should you ideally save monthly for festivals?',
+                            options: ['₹500-1000', '₹2000-3000', '₹5000+', 'Whatever is left over'],
+                            correct: 0
+                        },
+                        {
+                            question: 'What should you do if you can\'t afford a festival expense?',
+                            options: ['Borrow money', 'Skip the expense', 'Use credit card', 'Plan better for next year'],
+                            correct: 3
+                        },
+                        {
+                            question: 'Which festival expense is most important to budget for?',
+                            options: ['New clothes', 'Food and sweets', 'Gifts for family', 'All of the above'],
+                            correct: 3
+                        }
+                    ]
+                },
+                2: {
+                    title: 'Buying a Scooter',
+                    content: 'A scooter can be a great investment for daily transportation, but it\'s important to make the right choice. Consider your budget, fuel efficiency, maintenance costs, and resale value. Don\'t just look at the initial price - think about the total cost of ownership over time. Research different models, compare prices, and consider both new and used options.',
+                    questions: [
+                        {
+                            question: 'What should you consider when buying a scooter?',
+                            options: ['Only the initial price', 'Total cost of ownership', 'Just the color', 'Only brand name'],
+                            correct: 1
+                        },
+                        {
+                            question: 'What is the most important factor for fuel efficiency?',
+                            options: ['Engine size', 'Brand name', 'Regular maintenance', 'Color'],
+                            correct: 2
+                        },
+                        {
+                            question: 'When is it better to buy a used scooter?',
+                            options: ['Never', 'When budget is limited', 'Only for new riders', 'Always'],
+                            correct: 1
+                        },
+                        {
+                            question: 'What should you check before buying a used scooter?',
+                            options: ['Only the price', 'Service history and condition', 'Just the mileage', 'Only the color'],
+                            correct: 1
+                        }
+                    ]
+                },
+                3: {
+                    title: 'Loans 101',
+                    content: 'Loans can be helpful when you need money for important purchases, but it\'s crucial to understand how they work. Different types of loans have different interest rates and terms. Always read the fine print, understand the total amount you\'ll pay back, and make sure you can afford the monthly payments. Good credit history can help you get better loan terms.',
+                    questions: [
+                        {
+                            question: 'What is most important when taking a loan?',
+                            options: ['Getting the money quickly', 'Understanding the terms and interest', 'Choosing the biggest amount', 'Not reading the documents'],
+                            correct: 1
+                        },
+                        {
+                            question: 'What is a good debt-to-income ratio?',
+                            options: ['50% or less', '70% or less', '90% or less', '100%'],
+                            correct: 0
+                        },
+                        {
+                            question: 'What happens if you miss loan payments?',
+                            options: ['Nothing', 'Late fees and credit damage', 'Free money', 'Lower interest rate'],
+                            correct: 1
+                        },
+                        {
+                            question: 'What is the best way to improve your credit score?',
+                            options: ['Take more loans', 'Pay bills on time', 'Avoid all loans', 'Only use cash'],
+                            correct: 1
+                        }
+                    ]
+                }
+            };
+
+            currentModule = modules[moduleId];
+            if (currentModule) {
+                showModuleModal(currentModule);
+            }
+        }
+
+        function openWomenModule(moduleId) {
+            if (!hasAccess && !freeTrialUsed) {
+                showErrorMessage('Please choose an access method first.');
+                return;
+            }
+
+            const womenModules = {
+                1: {
+                    title: 'Managing Household Budget',
+                    content: 'Managing a household budget is crucial for financial stability. Start by tracking all income and expenses for one month. Categorize expenses into fixed (rent, utilities) and variable (food, entertainment). Allocate 50% for needs, 30% for wants, and 20% for savings. Use simple tools like a notebook or mobile app to track daily expenses.',
+                    questions: [
+                        {
+                            question: 'What percentage should you allocate for savings?',
+                            options: ['10%', '20%', '30%', '40%'],
+                            correct: 1
+                        },
+                        {
+                            question: 'What is the 50-30-20 rule?',
+                            options: ['50% needs, 30% wants, 20% savings', '50% savings, 30% needs, 20% wants', '50% wants, 30% savings, 20% needs', '50% income, 30% expenses, 20% debt'],
+                            correct: 0
+                        },
+                        {
+                            question: 'What should you track first when budgeting?',
+                            options: ['Only income', 'Only expenses', 'Both income and expenses', 'Only savings'],
+                            correct: 2
+                        },
+                        {
+                            question: 'What is the best way to track daily expenses?',
+                            options: ['Remember everything', 'Use a notebook or app', 'Only track big expenses', 'Ask family members'],
+                            correct: 1
+                        }
+                    ]
+                },
+                2: {
+                    title: 'Starting a Small Business',
+                    content: 'Many women successfully start small businesses from home. Identify your skills - cooking, crafting, tutoring, or services. Start small with minimal investment. Research your market, set competitive prices, and use social media for marketing. Keep separate accounts for business and personal finances. Start with ₹5,000-10,000 and grow gradually.',
+                    questions: [
+                        {
+                            question: 'What is the first step in starting a small business?',
+                            options: ['Get a loan', 'Identify your skills', 'Hire employees', 'Buy equipment'],
+                            correct: 1
+                        },
+                        {
+                            question: 'How much should you invest initially?',
+                            options: ['₹50,000+', '₹5,000-10,000', '₹1,00,000+', 'Whatever you have'],
+                            correct: 1
+                        },
+                        {
+                            question: 'What is important for business success?',
+                            options: ['Only good products', 'Only marketing', 'Good products and marketing', 'Only low prices'],
+                            correct: 2
+                        },
+                        {
+                            question: 'Should you keep business and personal money separate?',
+                            options: ['No, it\'s the same', 'Yes, always', 'Only for big businesses', 'Only if profitable'],
+                            correct: 1
+                        }
+                    ]
+                },
+                3: {
+                    title: 'Saving for Children\'s Education',
+                    content: 'Education is one of the best investments for your children\'s future. Start saving early - even ₹500-1000 per month can grow significantly over 15-20 years. Consider education-specific savings plans, PPF, or mutual funds. Research education costs and inflation. The earlier you start, the less you need to save monthly due to compound interest.',
+                    questions: [
+                        {
+                            question: 'Why is it important to start saving for education early?',
+                            options: ['To avoid loans', 'Compound interest helps', 'Children will be grateful', 'It\'s easier to save small amounts'],
+                            correct: 1
+                        },
+                        {
+                            question: 'How much should you save monthly for education?',
+                            options: ['₹500-1000', '₹5000+', '₹100-200', 'Whatever is left'],
+                            correct: 0
+                        },
+                        {
+                            question: 'What is compound interest?',
+                            options: ['Interest on principal only', 'Interest on principal + previous interest', 'Fixed interest rate', 'High interest rate'],
+                            correct: 1
+                        },
+                        {
+                            question: 'Which is better for education savings?',
+                            options: ['Only bank savings', 'Only PPF', 'Mix of different options', 'Only mutual funds'],
+                            correct: 2
+                        }
+                    ]
+                }
+            };
+
+            currentModule = womenModules[moduleId];
+            if (currentModule) {
+                showModuleModal(currentModule);
+            }
+        }
+
+        function showModuleModal(module) {
+            document.getElementById('module-title').textContent = module.title;
+            document.getElementById('module-content').textContent = module.content;
+            
+            // Initialize quiz state
+            currentModule.currentQuestion = 0;
+            currentModule.score = 0;
+            currentModule.totalQuestions = module.questions.length;
+            
+            showQuestion(module.questions[0]);
+            
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('complete-btn').disabled = true;
+            selectedQuizAnswer = null;
+            showQuizResult = false;
+            
+            document.getElementById('module-modal').classList.remove('hidden');
+        }
+
+        function showQuestion(question) {
+            document.getElementById('quiz-question').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-gray-200 hover:border-gray-300';
+                button.textContent = option;
+                button.onclick = () => selectQuizAnswer(index, button);
+                optionsContainer.appendChild(button);
+            });
+            
+            // Update progress indicator
+            const progressText = `Question ${currentModule.currentQuestion + 1} of ${currentModule.totalQuestions}`;
+            document.getElementById('quiz-question').textContent = `${progressText}: ${question.question}`;
+        }
+
+        function selectQuizAnswer(index, button) {
+            // Reset all buttons
+            document.querySelectorAll('#quiz-options button').forEach(btn => {
+                btn.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-gray-200 hover:border-gray-300';
+            });
+            
+            // Highlight selected button
+            button.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-blue-500 bg-blue-50';
+            
+            selectedQuizAnswer = index;
+            document.getElementById('complete-btn').disabled = false;
+        }
+
+        function completeModule() {
+            if (selectedQuizAnswer === null) return;
+            
+            const currentQuestion = currentModule.questions[currentModule.currentQuestion];
+            const isCorrect = selectedQuizAnswer === currentQuestion.correct;
+            const resultDiv = document.getElementById('quiz-result');
+            
+            if (isCorrect) {
+                currentModule.score += 1;
+                resultDiv.className = 'p-4 rounded-xl bg-green-50 border border-green-200';
+                resultDiv.innerHTML = '<p class="text-green-800 font-medium text-sm">🎉 Correct!</p>';
+            } else {
+                resultDiv.className = 'p-4 rounded-xl bg-red-50 border border-red-200';
+                resultDiv.innerHTML = `<p class="text-red-800 font-medium text-sm">❌ Incorrect. The correct answer is: ${currentQuestion.options[currentQuestion.correct]}</p>`;
+            }
+            
+            resultDiv.classList.remove('hidden');
+            
+            // Move to next question or complete module
+            currentModule.currentQuestion += 1;
+            
+            if (currentModule.currentQuestion < currentModule.totalQuestions) {
+                // Show next question after a delay
+                setTimeout(() => {
+                    resultDiv.classList.add('hidden');
+                    showQuestion(currentModule.questions[currentModule.currentQuestion]);
+                    document.getElementById('complete-btn').disabled = true;
+                    selectedQuizAnswer = null;
+                }, 2000);
+            } else {
+                // Module completed
+                const percentage = Math.round((currentModule.score / currentModule.totalQuestions) * 100);
+                const pointsEarned = Math.round((currentModule.score / currentModule.totalQuestions) * 10);
+                
+                setTimeout(() => {
+                    resultDiv.className = 'p-4 rounded-xl bg-blue-50 border border-blue-200';
+                    resultDiv.innerHTML = `
+                        <div class="text-center">
+                            <p class="text-blue-800 font-bold text-lg mb-2">Module Completed! 🎉</p>
+                            <p class="text-blue-700 text-sm mb-2">Score: ${currentModule.score}/${currentModule.totalQuestions} (${percentage}%)</p>
+                            <p class="text-blue-600 text-sm">You earned ${pointsEarned} points!</p>
+                        </div>
+                    `;
+                    
+                    points += pointsEarned;
+                    completedModules += 1;
+                    
+                    // Update all displays
+                    document.getElementById('points').textContent = points + ' Points';
+                    document.getElementById('rewards-points').textContent = points;
+                    updatePrincessMode();
+                    updateLeaderboard();
+                    showPrincessSuccess();
+                    
+                    document.getElementById('complete-btn').textContent = 'Module Completed';
+                    document.getElementById('complete-btn').disabled = true;
+                }, 2000);
+            }
+        }
+
+        function closeModule() {
+            document.getElementById('module-modal').classList.add('hidden');
+            currentModule = null;
+            selectedQuizAnswer = null;
+            showQuizResult = false;
+        }
+
+        // Utility Functions
+        function showSuccessMessage(message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'fixed top-4 left-4 right-4 z-50 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-2xl p-4 shadow-xl';
+            alertDiv.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                        <span class="text-lg">✅</span>
+                    </div>
+                    <p class="font-medium text-sm">${message}</p>
+                </div>
+            `;
+            document.body.appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+
+        function showErrorMessage(message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'fixed top-4 left-4 right-4 z-50 bg-gradient-to-r from-red-400 to-orange-400 text-white rounded-2xl p-4 shadow-xl';
+            alertDiv.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                        <span class="text-lg">❌</span>
+                    </div>
+                    <p class="font-medium text-sm">${message}</p>
+                </div>
+            `;
+            document.body.appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+
+        function updateLeaderboard() {
+            // Sample leaderboard data (in a real app, this would come from a server)
+            const leaderboardData = [
+                { name: 'Priya Sharma', points: 85, rank: 1, avatar: '👩‍💼' },
+                { name: 'Anita Singh', points: 72, rank: 2, avatar: '👩‍🎓' },
+                { name: 'Meera Patel', points: 68, rank: 3, avatar: '👩‍⚕️' },
+                { name: 'Sunita Kumar', points: 55, rank: 4, avatar: '👩‍🍳' },
+                { name: 'Rekha Gupta', points: 48, rank: 5, avatar: '👩‍🏫' },
+                { name: 'You', points: points, rank: 6, avatar: '👤' }
+            ];
+            
+            // Sort by points (descending)
+            leaderboardData.sort((a, b) => b.points - a.points);
+            
+            // Update ranks
+            leaderboardData.forEach((user, index) => {
+                user.rank = index + 1;
+            });
+            
+            // Find user's rank
+            const userRank = leaderboardData.find(user => user.name === 'You')?.rank || leaderboardData.length;
+            
+            // Update user's rank display
+            document.getElementById('user-rank').textContent = `#${userRank}`;
+            document.getElementById('user-score').textContent = `${points} Points`;
+            
+            // Update monthly stats
+            monthlyPoints = points;
+            monthlyModules = completedModules;
+            document.getElementById('monthly-points').textContent = monthlyPoints;
+            document.getElementById('monthly-modules').textContent = monthlyModules;
+            
+            // Populate leaderboard list
+            const leaderboardList = document.getElementById('leaderboard-list');
+            leaderboardList.innerHTML = '';
+            
+            leaderboardData.slice(0, 5).forEach((user, index) => {
+                const entry = document.createElement('div');
+                entry.className = `flex items-center justify-between p-3 rounded-xl ${
+                    user.name === 'You' 
+                        ? 'bg-gradient-to-r from-yellow-100 to-orange-100 border border-yellow-300' 
+                        : 'bg-white border border-gray-200'
+                }`;
+                
+                const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🏅';
+                
+                entry.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">${user.avatar}</span>
+                        <div>
+                            <p class="font-semibold text-gray-800 text-sm">${user.name}</p>
+                            <p class="text-gray-600 text-xs">${user.points} Points</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-lg">${medal}</span>
+                        <p class="text-gray-600 text-xs">#${user.rank}</p>
+                    </div>
+                `;
+                
+                leaderboardList.appendChild(entry);
+            });
+        }
+
+        function updatePrincessMode() {
+            // Update women's progress
+            document.getElementById('women-modules').textContent = completedModules + '/3';
+            document.getElementById('women-points').textContent = points;
+            
+            // Update progress bar
+            const progressPercentage = (completedModules / 3) * 100;
+            document.getElementById('women-progress').style.width = progressPercentage + '%';
+            
+            // Update rewards based on progress
+            updateWomenRewards();
+        }
+
+        function updateWomenRewards() {
+            const rewards = document.querySelectorAll('#girls-mode .card:nth-last-child(2) .space-y-2 > div');
+            
+            rewards.forEach((reward, index) => {
+                if (index < completedModules) {
+                    reward.classList.remove('bg-gradient-to-r', 'from-green-50', 'to-blue-50');
+                    reward.classList.add('bg-gradient-to-r', 'from-green-100', 'to-emerald-100');
+                    reward.querySelector('span:last-child').textContent = '✅ Earned!';
+                    reward.querySelector('span:last-child').classList.add('text-green-600');
+                }
+            });
+        }
+
+        function showPrincessSuccess() {
+            const messages = [
+                '💪 Excellent! You completed a module and earned 10 points! You\'re building financial independence!',
+                '🌟 Great progress! You\'re one step closer to your financial goals! Keep learning!',
+                '💎 Wonderful! Your financial knowledge is growing! You\'re empowering yourself!',
+                '🏆 Fantastic! Every module makes you more financially confident!'
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // Create a professional achievement alert
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'fixed top-4 left-4 right-4 z-50 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-2xl p-4 shadow-xl';
+            alertDiv.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                        <span class="text-2xl">💪</span>
+                    </div>
+                    <div>
+                        <p class="font-bold text-sm">Achievement Unlocked!</p>
+                        <p class="text-xs opacity-90">${randomMessage}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Remove after 4 seconds
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 4000);
+        }
+
+        // Add some sparkle animations
+        function addSparkles() {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.className = 'fixed text-2xl pointer-events-none animate-ping';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.zIndex = '1000';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+
+        // AI Assistant Functions
+        function askAI(question) {
+            addUserMessage(question);
+            setTimeout(() => {
+                const response = getAIResponse(question);
+                addAIMessage(response);
+            }, 1000);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const message = input.value.trim();
+            if (message) {
+                addUserMessage(message);
+                input.value = '';
+                setTimeout(() => {
+                    const response = getAIResponse(message);
+                    addAIMessage(response);
+                }, 1000);
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addUserMessage(message) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex items-start space-x-2 justify-end';
+            messageDiv.innerHTML = `
+                <div class="bg-indigo-500 text-white rounded-lg p-3 max-w-xs">
+                    <p class="text-xs">${message}</p>
+                </div>
+                <div class="w-8 h-8 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-sm">👤</span>
+                </div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addAIMessage(message) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex items-start space-x-2';
+            messageDiv.innerHTML = `
+                <div class="w-8 h-8 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-sm">🤖</span>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                    <p class="text-gray-700 text-xs">${message}</p>
+                </div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getAIResponse(question) {
+            const responses = {
+                'saving': 'To start saving money, follow the 50-30-20 rule: 50% for needs, 30% for wants, and 20% for savings. Start small with ₹100-500 per month and gradually increase. Open a separate savings account and set up automatic transfers.',
+                'emergency': 'An emergency fund should cover 3-6 months of your expenses. For rural families, aim for ₹10,000-50,000 depending on your monthly expenses. This fund should be easily accessible in a savings account.',
+                'expenses': 'To reduce expenses: 1) Track all spending for a month, 2) Cut unnecessary subscriptions, 3) Cook at home more often, 4) Use public transport, 5) Buy in bulk for essentials, 6) Compare prices before purchasing.',
+                'investing': 'Start with low-risk options: 1) Fixed deposits for guaranteed returns, 2) PPF for long-term savings, 3) Mutual funds for moderate risk, 4) Gold as a hedge. Always invest only what you can afford to lose.',
+                'budget': 'Create a simple budget: 1) List all income sources, 2) List all expenses (fixed and variable), 3) Subtract expenses from income, 4) Allocate remaining money to savings and investments. Review monthly.',
+                'loan': 'Before taking a loan: 1) Check your credit score, 2) Compare interest rates from different banks, 3) Calculate EMI using online calculators, 4) Ensure EMI is not more than 40% of your income, 5) Read all terms carefully.',
+                'default': 'I can help you with budgeting, saving strategies, investment basics, loan information, and general financial planning. Please ask me a specific question about your financial situation, and I\'ll provide personalized advice!'
+            };
+
+            const lowerQuestion = question.toLowerCase();
+            
+            if (lowerQuestion.includes('saving') || lowerQuestion.includes('save')) {
+                return responses.saving;
+            } else if (lowerQuestion.includes('emergency') || lowerQuestion.includes('fund')) {
+                return responses.emergency;
+            } else if (lowerQuestion.includes('expense') || lowerQuestion.includes('reduce') || lowerQuestion.includes('cut')) {
+                return responses.expenses;
+            } else if (lowerQuestion.includes('invest') || lowerQuestion.includes('investment')) {
+                return responses.investing;
+            } else if (lowerQuestion.includes('budget') || lowerQuestion.includes('budgeting')) {
+                return responses.budget;
+            } else if (lowerQuestion.includes('loan') || lowerQuestion.includes('borrow')) {
+                return responses.loan;
+            } else {
+                return responses.default;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Udaan Lite with AI Assistant loaded successfully! 🤖');
+            
+            // Add sparkles every 3 seconds
+            setInterval(addSparkles, 3000);
+            
+            // Update Princess Mode on load
+            updatePrincessMode();
+        });
+    </script>
+</body>
+</html>
