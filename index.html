@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Udaan Lite">
-    <meta name="theme-color" content="#3b82f6">
+    <meta name="theme-color" content="#a8d8ea">
     <title>Udaan Lite - Financial Literacy App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,86 +20,349 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            background: #0a0a0a;
+            color: #ffffff;
         }
         .mobile-container { max-width: 100vw; margin: 0 auto; }
+        
+        /* Neumorphism Button Styles */
         .btn-primary { 
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            color: #ffffff;
             font-weight: 600;
-            padding: 16px 24px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-            transition: all 0.2s ease;
+            padding: 18px 32px;
+            border-radius: 24px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.4),
+                -8px -8px 16px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             font-size: 16px;
             width: 100%;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-primary:active { transform: scale(0.98); }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        .btn-primary:hover { 
+            transform: translateY(-2px);
+            box-shadow: 
+                12px 12px 24px rgba(0, 0, 0, 0.5),
+                -12px -12px 24px rgba(255, 255, 255, 0.08);
+        }
+        .btn-primary:active { 
+            transform: translateY(0);
+            box-shadow: 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.3),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+        }
+        
         .btn-secondary { 
-            background: linear-gradient(135deg, #a855f7, #7c3aed);
-            color: white;
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            color: #ffffff;
             font-weight: 600;
-            padding: 16px 24px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
-            transition: all 0.2s ease;
+            padding: 18px 32px;
+            border-radius: 24px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.4),
+                -8px -8px 16px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             font-size: 16px;
             width: 100%;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-secondary:active { transform: scale(0.98); }
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s;
+        }
+        .btn-secondary:hover::before {
+            left: 100%;
+        }
+        .btn-secondary:hover { 
+            transform: translateY(-2px);
+            box-shadow: 
+                12px 12px 24px rgba(0, 0, 0, 0.5),
+                -12px -12px 24px rgba(255, 255, 255, 0.08);
+        }
+        .btn-secondary:active { 
+            transform: translateY(0);
+            box-shadow: 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.3),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Glassmorphism Card Styles */
         .card { 
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        .card:active { transform: scale(0.98); }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+        .card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        .card:active { 
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 24px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modern Navigation Styles */
         .nav-item { 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 8px;
-            border-radius: 12px;
-            transition: all 0.2s ease;
+            gap: 8px;
+            padding: 12px;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             min-width: 60px;
+            position: relative;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
         }
         .nav-item.active { 
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
+            color: #ffffff;
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
+        .nav-item:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-item:active {
+            transform: scale(0.95);
+        }
+        
+        /* Page Animations */
         .page { 
             min-height: 100vh;
             padding-bottom: 100px;
-            animation: slideIn 0.3s ease-out;
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
+        
+        /* Enhanced Animations */
+        @keyframes slideInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .slide-in-up { animation: slideInUp 0.6s ease-out; }
+        
+        @keyframes slideInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .slide-in-down { animation: slideInDown 0.6s ease-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(1deg); }
+            50% { transform: translateY(-12px) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(-1deg); }
+        }
+        .float { animation: float 4s ease-in-out infinite; }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.08); }
+        }
+        .pulse { animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        
+        /* Glow Animation */
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(99, 102, 241, 0.1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(99, 102, 241, 0.6), 0 0 60px rgba(99, 102, 241, 0.2);
+            }
+        }
+        .glow { animation: glow 2s ease-in-out infinite; }
+        
+        /* Shimmer Animation */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .bounce { animation: bounce 1s infinite; }
+        
+        /* Rotate Animation */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .rotate { animation: rotate 2s linear infinite; }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Neumorphism Effect */
+        .neumorphism {
+            background: #1a1a1a;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.4),
+                -8px -8px 16px rgba(255, 255, 255, 0.05);
+        }
+        
         .status-bar { height: env(safe-area-inset-top, 20px); }
         .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+        }
+        
+        /* Modern Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        /* Glowing Elements */
+        .glow-effect {
+            position: relative;
+        }
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            background: inherit;
+            filter: blur(20px);
+            opacity: 0.3;
+            z-index: -1;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-purple-50">
+<body class="bg-gradient-to-br from-gray-900 via-black to-gray-800">
     <div class="status-bar"></div>
     <div id="app" class="mobile-container">
         <!-- Landing Page -->
-        <div id="landing" class="page flex flex-col">
+        <div id="landing" class="page flex flex-col relative overflow-hidden">
+            <!-- Animated Background -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute top-40 right-16 w-32 h-32 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div class="absolute bottom-32 left-20 w-36 h-36 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse delay-3000"></div>
+            </div>
+
             <!-- Header -->
-            <header class="flex justify-between items-center px-4 py-3 bg-white/80 backdrop-blur-sm">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
-                        <span class="text-white text-xl">📖</span>
+            <header class="relative z-10 flex justify-between items-center px-6 py-6 glass border-b border-white/10">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center glow-effect">
+                        <span class="text-white text-2xl">📚</span>
                     </div>
-                    <span class="text-2xl font-bold text-gray-800" id="header-title">Udaan</span>
+                    <div>
+                        <span class="text-3xl font-bold gradient-text" id="header-title">Udaan</span>
+                        <p class="text-xs text-gray-400 -mt-1">Financial Literacy</p>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <span class="text-lg">🌐</span>
-                    <select id="language-selector" class="bg-transparent text-sm text-gray-600 border-none outline-none font-medium" onchange="changeLanguage()">
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 glass rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm">🌐</span>
+                    </div>
+                    <select id="language-selector" class="bg-transparent text-sm text-gray-300 border-none outline-none font-medium" onchange="changeLanguage()">
                         <option value="en">English</option>
                         <option value="hi">हिंदी</option>
                     </select>
@@ -107,440 +370,348 @@
             </header>
 
             <!-- Main Content -->
-            <main class="flex-1 flex flex-col items-center justify-center px-4 text-center">
-                <!-- Logo and Tagline -->
-                <div class="mb-8">
-                    <div class="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl relative">
-                        <!-- Open book -->
-                        <div class="text-white text-6xl">📖</div>
-                        <!-- Money symbol on book -->
-                        <div class="absolute -bottom-1 -right-1 text-green-400 text-2xl">💰</div>
+            <main class="flex-1 flex flex-col items-center justify-center px-6 text-center relative z-10">
+                <!-- Hero Section -->
+                <div class="max-w-4xl mx-auto">
+                    <!-- Main Title -->
+                    <div class="mb-12 slide-in-down">
+                        <h1 class="text-7xl md:text-8xl font-bold gradient-text mb-4" id="app-title">Udaan</h1>
+                        <p class="text-2xl md:text-3xl text-gray-300 font-light" id="app-subtitle">Financial Literacy</p>
                     </div>
-                    <h1 class="text-4xl font-bold text-gray-800 mb-3" id="app-title">Udaan</h1>
-                    <p class="text-lg text-gray-600 max-w-sm mx-auto leading-relaxed" id="app-tagline">
-                        Learn to Earn - Bridging India's Financial Literacy Gap
-                    </p>
-                </div>
 
-                <!-- Hero Illustration -->
-                <div class="mb-8">
-                    <div class="w-72 h-48 bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl flex items-center justify-center shadow-xl mx-auto">
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                                <span class="text-white text-3xl">💰</span>
+                    <!-- Logo Area -->
+                    <div class="relative mb-16 slide-in-up">
+                        <div class="w-48 h-48 md:w-56 md:h-56 neumorphism rounded-3xl flex items-center justify-center mx-auto relative overflow-hidden glow-effect pulse">
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent shimmer"></div>
+                            <div class="text-6xl md:text-7xl bounce">📖</div>
+                            <div class="absolute bottom-3 right-3 w-16 h-16 neumorphism rounded-full flex items-center justify-center glow-effect">
+                                <span class="text-white text-2xl">💰</span>
                             </div>
-                            <p class="text-base text-gray-600 font-medium">Financial Learning</p>
+                </div>
+
+                        <!-- Floating decorative elements -->
+                        <div class="absolute -top-8 -left-8 w-16 h-16 neumorphism rounded-full flex items-center justify-center float">
+                            <span class="text-white text-2xl">✨</span>
+                            </div>
+                        <div class="absolute -bottom-8 -left-12 w-14 h-14 neumorphism rounded-full flex items-center justify-center float" style="animation-delay: 1s;">
+                            <span class="text-white text-xl">💎</span>
+                        </div>
+                        <div class="absolute top-1/2 -right-12 w-12 h-12 neumorphism rounded-full flex items-center justify-center float" style="animation-delay: 2s;">
+                            <span class="text-white text-lg">🚀</span>
+                    </div>
+                </div>
+
+                    <!-- Tagline -->
+                    <div class="mb-12 fade-in" style="animation-delay: 0.5s;">
+                        <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium" id="app-tagline">
+                            Learn to Earn - Bridging India's Financial Literacy Gap
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hero Cards -->
+                <div class="mb-12 w-full max-w-sm">
+                    <div class="card mb-8 slide-in-up" style="animation-delay: 0.3s;">
+                        <div class="flex items-center justify-center mb-6">
+                            <div class="w-20 h-20 neumorphism rounded-2xl flex items-center justify-center glow-effect pulse">
+                                <span class="text-white text-3xl">🎯</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" id="access-title">Start Your Journey</h3>
+                        <p class="text-gray-400 text-sm mb-6">Choose how you'd like to begin learning</p>
+                        
+                        <div class="space-y-4">
+                            <button onclick="showAccessCode()" class="btn-primary flex items-center justify-center space-x-3 bounce">
+                                <span class="text-xl">🔑</span>
+                                <span id="access-code-btn">Enter Access Code</span>
+                            </button>
+                            <button onclick="startFreeTrial()" class="btn-secondary flex items-center justify-center space-x-3 bounce">
+                                <span class="text-xl">🆓</span>
+                                <span id="free-trial-btn">Free Trial (3 modules)</span>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Access Options -->
-                <div class="space-y-4 w-full max-w-xs mb-6">
-                    <div class="card bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-                        <h3 class="font-bold text-blue-800 mb-3 text-sm" id="access-title">Choose Your Access</h3>
-                        <div class="space-y-2">
-                            <button onclick="showAccessCode()" class="w-full p-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg text-sm font-medium hover:from-blue-600 hover:to-purple-600 transition-all">
-                                🔑 <span id="access-code-btn">Enter Access Code</span>
-                            </button>
-                            <button onclick="startFreeTrial()" class="w-full p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium hover:from-purple-600 hover:to-pink-600 transition-all">
-                                🆓 <span id="free-trial-btn">Free Trial (3 modules)</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="space-y-3 w-full max-w-xs">
-                    <button onclick="showPage('modules')" class="btn-primary flex items-center justify-center space-x-2">
+                <!-- Feature Cards -->
+                <div class="space-y-4 w-full max-w-sm">
+                    <button onclick="showPage('modules')" class="w-full p-5 neumorphism rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-4 glow-effect slide-in-up" style="animation-delay: 0.5s;">
+                        <span class="text-2xl">🚀</span>
                         <span id="start-learning-btn">Start Learning</span>
-                        <span>→</span>
+                        <span class="text-sm opacity-60">→</span>
                     </button>
-                    <button onclick="showPage('girls-mode')" class="btn-secondary flex items-center justify-center space-x-2">
+                    <button onclick="showPage('girls-mode')" class="w-full p-5 neumorphism rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-4 glow-effect slide-in-up" style="animation-delay: 0.7s;">
+                        <span class="text-2xl">🌸</span>
                         <span id="womens-mode-btn">Women's Mode</span>
-                        <span>🌸</span>
+                        <span class="text-sm opacity-60">→</span>
                     </button>
-                    <button onclick="showPage('ai-assistant')" class="w-full p-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg text-sm font-medium hover:from-indigo-600 hover:to-purple-600 transition-all flex items-center justify-center space-x-2">
+                    <button onclick="showPage('ai-assistant')" class="w-full p-5 neumorphism rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-4 glow-effect slide-in-up" style="animation-delay: 0.9s;">
+                        <span class="text-2xl">🤖</span>
                         <span id="ai-assistant-btn">AI Assistant</span>
-                        <span>🤖</span>
+                        <span class="text-sm opacity-60">→</span>
                     </button>
                 </div>
             </main>
 
             <!-- Footer -->
-            <footer class="px-4 py-3 text-center">
-                <p class="text-sm text-gray-500" id="footer-text">Empowering financial literacy across India</p>
+            <footer class="relative z-10 px-6 py-6 text-center">
+                <p class="text-sm text-gray-400 font-medium" id="footer-text">Empowering financial literacy across India</p>
             </footer>
         </div>
 
         <!-- Learning Modules Page -->
-        <div id="modules" class="hidden page bg-gradient-to-br from-blue-50 to-purple-50 px-4 py-4 pb-24">
-            <div class="max-w-sm mx-auto">
+        <div id="modules" class="hidden page px-6 py-6 pb-24 relative overflow-hidden">
+            <!-- Animated Background -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 right-10 w-48 h-48 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-40 left-10 w-40 h-40 bg-gradient-to-r from-blue-500/15 to-indigo-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+                </div>
+
+            <div class="max-w-sm mx-auto relative z-10">
                 <!-- Header -->
-                <div class="text-center mb-6">
-                    <h1 class="text-2xl font-bold text-gray-800 mb-2" id="modules-title">Learning Modules</h1>
-                    <p class="text-gray-600 text-sm" id="modules-subtitle">Master financial literacy step by step</p>
+                <div class="text-center mb-10 slide-in-down">
+                    <div class="w-20 h-20 neumorphism rounded-2xl flex items-center justify-center mx-auto mb-6 glow-effect pulse">
+                        <span class="text-white text-3xl">📚</span>
+                    </div>
+                    <h1 class="text-4xl font-bold gradient-text mb-3" id="modules-title">Learning Modules</h1>
+                    <p class="text-gray-400 text-sm" id="modules-subtitle">Master financial literacy step by step</p>
                 </div>
 
                 <!-- Points Display -->
-                <div class="card mb-6 flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">⭐</span>
-                        <span class="font-semibold text-gray-800" id="points">0 Points</span>
+                <div class="card mb-10">
+                        <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-5">
+                            <div class="w-16 h-16 neumorphism rounded-xl flex items-center justify-center glow-effect">
+                                <span class="text-white text-2xl">⭐</span>
+                            </div>
+                            <div>
+                                <span class="font-bold text-white text-xl" id="points">0 Points</span>
+                                <p class="text-xs text-gray-400">Keep learning!</p>
+                        </div>
                     </div>
-                    <div class="text-xs text-gray-500">Keep learning!</div>
-                </div>
+                        <div class="text-right">
+                            <div class="w-12 h-12 neumorphism rounded-full flex items-center justify-center glow-effect">
+                                <span class="text-white text-lg">🔥</span>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
 
                 <!-- Modules Grid -->
-                <div class="space-y-4">
-                    <div class="card border-green-200 bg-green-50 cursor-pointer" onclick="openModule(1)">
-                        <div class="flex items-start justify-between mb-3">
-                            <h3 class="font-semibold text-gray-800 text-base" id="module-1-title">Saving for Festivals</h3>
-                            <span class="text-green-500 text-xl">✓</span>
+                <div class="space-y-6">
+                    <!-- Module 1 - Completed -->
+                    <div class="card cursor-pointer transform hover:scale-105 transition-all duration-300 glow-effect" onclick="openModule(1)">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <div class="w-14 h-14 neumorphism rounded-xl flex items-center justify-center glow-effect">
+                                        <span class="text-white text-xl">🎉</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3" id="module-1-desc">Learn how to budget and save for special occasions</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-green-600 uppercase tracking-wide" id="module-1-status">completed</span>
-                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <h3 class="font-bold text-white text-xl" id="module-1-title">Saving for Festivals</h3>
+                        </div>
+                                <p class="text-gray-400 text-sm mb-5" id="module-1-desc">Learn how to budget and save for special occasions</p>
+                    </div>
+                            <div class="w-16 h-16 neumorphism rounded-full flex items-center justify-center glow-effect">
+                                <span class="text-white text-2xl">✓</span>
+                </div>
+            </div>
+                            <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-emerald-400 rounded-full glow-effect"></div>
+                                <span class="text-sm font-semibold text-emerald-400 uppercase tracking-wide" id="module-1-status">completed</span>
+                            </div>
+                            <div class="w-10 h-10 neumorphism rounded-full flex items-center justify-center glow-effect">
                                 <span class="text-white text-sm">▶</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card border-blue-200 bg-blue-50 cursor-pointer" onclick="openModule(2)">
-                        <div class="flex items-start justify-between mb-3">
-                            <h3 class="font-semibold text-gray-800 text-base" id="module-2-title">Buying a Scooter</h3>
-                            <span class="text-blue-500 text-xl">▶</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-3" id="module-2-desc">Smart purchasing decisions for transportation</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-blue-600 uppercase tracking-wide" id="module-2-status">in progress</span>
-                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                                <span class="text-white text-sm">▶</span>
+                    <!-- Module 2 - In Progress -->
+                    <div class="card cursor-pointer transform hover:scale-105 transition-all duration-300 glow-effect" onclick="openModule(2)">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <div class="w-14 h-14 neumorphism rounded-xl flex items-center justify-center glow-effect">
+                                        <span class="text-white text-xl">🏍️</span>
                             </div>
+                                    <h3 class="font-bold text-white text-xl" id="module-2-title">Buying a Scooter</h3>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-5" id="module-2-desc">Smart purchasing decisions for transportation</p>
+                            </div>
+                            <div class="w-16 h-16 neumorphism rounded-full flex items-center justify-center glow-effect">
+                                <span class="text-white text-2xl">▶</span>
                         </div>
-                    </div>
-
-                    <div class="card border-gray-200 bg-gray-50 opacity-60">
-                        <div class="flex items-start justify-between mb-3">
-                            <h3 class="font-semibold text-gray-800 text-base" id="module-3-title">Loans 101</h3>
-                            <span class="text-gray-400 text-xl">🔒</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-3" id="module-3-desc">Understanding different types of loans and interest</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide" id="module-3-status">locked</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-blue-400 rounded-full animate-pulse glow-effect"></div>
+                                <span class="text-sm font-semibold text-blue-400 uppercase tracking-wide" id="module-2-status">in progress</span>
+                                </div>
+                            <div class="w-10 h-10 neumorphism rounded-full flex items-center justify-center glow-effect">
+                                <span class="text-white text-sm">▶</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                    <!-- Module 3 - Locked -->
+                    <div class="card opacity-60">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <div class="w-14 h-14 neumorphism rounded-xl flex items-center justify-center">
+                                        <span class="text-gray-500 text-xl">🔒</span>
+                        </div>
+                                    <h3 class="font-bold text-gray-500 text-xl" id="module-3-title">Loans 101</h3>
+                    </div>
+                                <p class="text-gray-600 text-sm mb-5" id="module-3-desc">Understanding different types of loans and interest</p>
+                </div>
+                            <div class="w-16 h-16 neumorphism rounded-full flex items-center justify-center">
+                                <span class="text-gray-500 text-2xl">🔒</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+                                <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide" id="module-3-status">locked</span>
+                            </div>
+                            <div class="text-xs text-gray-600">Complete previous modules</div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
 
         <!-- Women's Empowerment Mode -->
         <div id="girls-mode" class="hidden page bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 px-4 py-4 pb-24">
             <div class="max-w-sm mx-auto">
                 <!-- Header -->
-                <div class="text-center mb-6">
-                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 via-rose-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-xl">
-                        <span class="text-white text-3xl">🌸</span>
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-400 rounded-2xl flex items-center justify-center">
+                            <span class="text-white text-xl">🌸</span>
+                            </div>
+                        <span class="text-2xl font-bold text-pink-800">Udaan</span>
+                            </div>
+                    <div class="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full flex items-center justify-center">
+                        <span class="text-white text-lg">👩</span>
+                        </div>
+                            </div>
+
+                <!-- Main Content Card -->
+                <div class="card mb-6 bg-gradient-to-r from-pink-200 to-rose-200 border-pink-300 cursor-pointer" onclick="openWomenModule(1)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <h2 class="text-lg font-bold text-pink-800 mb-1">Shopping While Saving</h2>
+                            <p class="text-sm text-pink-700 mb-3">Chapter 1</p>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-20 bg-pink-300 rounded-full h-2">
+                                    <div class="bg-pink-500 h-2 rounded-full" style="width: 25%"></div>
+                            </div>
+                                <span class="text-xs text-pink-600 font-medium">25% com</span>
+                        </div>
+                            </div>
+                        <div class="w-16 h-16 bg-gradient-to-br from-pink-300 to-rose-300 rounded-2xl flex items-center justify-center ml-4">
+                            <span class="text-2xl">🛍️</span>
+                        </div>
                     </div>
-                    <h1 class="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-2" id="womens-mode-title">Women's Mode</h1>
-                    <p class="text-pink-600 text-sm font-medium" id="womens-mode-subtitle">Empowering women through financial independence</p>
                 </div>
 
-                <!-- Women's Specific Modules -->
-                <div class="card mb-6 bg-gradient-to-r from-pink-100 to-purple-100 border-pink-200">
-                    <h3 class="font-bold text-pink-800 mb-4 text-sm flex items-center justify-center">
-                        <span class="mr-2">👩‍💼</span> <span id="womens-modules-title">Women's Financial Modules</span>
-                    </h3>
+                <!-- Today's Progress Section -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-pink-800 text-center mb-4">Today's Progress</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Lessons Card -->
+                        <div class="card bg-pink-100 border-pink-200">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-pink-200 rounded-xl flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-pink-600 text-xl">📚</span>
+                            </div>
+                                <p class="text-sm font-medium text-gray-700 mb-1">Lessons</p>
+                                <p class="text-lg font-bold text-pink-600">2/8</p>
+                        </div>
+                    </div>
+
+                        <!-- Badges Card -->
+                        <div class="card bg-pink-100 border-pink-200">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-pink-200 rounded-xl flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-pink-600 text-xl">🏆</span>
+                            </div>
+                                <p class="text-sm font-medium text-gray-700 mb-1">Badges</p>
+                                <p class="text-lg font-bold text-pink-600">2</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                <!-- My Story Card -->
+                <div class="card mb-4 bg-pink-100 border-pink-200">
+                        <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-300 to-rose-300 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-pink-700 text-lg">👩</span>
+                            </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800 text-sm mb-1">My Story</h4>
+                            <p class="text-gray-600 text-xs leading-relaxed">I used to shop without a plan, but now I save money while buying what I need!</p>
+                            </div>
+                        </div>
+                            </div>
+
+                <!-- Tips & Tricks Card -->
+                <div class="card mb-6 bg-pink-100 border-pink-200">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-300 to-rose-300 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-pink-700 text-lg">💰</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800 text-sm mb-1">Tips & Tricks</h4>
+                            <p class="text-gray-600 text-xs">Smart shopping strategies for women</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Modules -->
                     <div class="space-y-3">
-                        <div class="card border-pink-200 bg-pink-50 cursor-pointer" onclick="openWomenModule(1)">
-                            <div class="flex items-start justify-between mb-3">
-                                <h3 class="font-semibold text-gray-800 text-sm" id="womens-module-1-title">Managing Household Budget</h3>
-                                <span class="text-pink-500 text-lg">✓</span>
+                    <div class="card border-purple-200 bg-purple-100 cursor-pointer" onclick="openWomenModule(2)">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-gray-800 text-sm">Starting a Small Business</h3>
+                            <span class="text-purple-400 text-lg">▶</span>
                             </div>
-                            <p class="text-gray-600 text-xs mb-3" id="womens-module-1-desc">Learn to manage family finances effectively</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-medium text-pink-600 uppercase tracking-wide" id="womens-module-1-status">completed</span>
-                                <div class="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white text-xs">▶</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card border-purple-200 bg-purple-50 cursor-pointer" onclick="openWomenModule(2)">
-                            <div class="flex items-start justify-between mb-3">
-                                <h3 class="font-semibold text-gray-800 text-sm">Starting a Small Business</h3>
-                                <span class="text-purple-500 text-lg">▶</span>
-                            </div>
-                            <p class="text-gray-600 text-xs mb-3">Turn your skills into income</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-medium text-purple-600 uppercase tracking-wide">in progress</span>
-                                <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white text-xs">▶</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card border-rose-200 bg-rose-50 cursor-pointer" onclick="openWomenModule(3)">
-                            <div class="flex items-start justify-between mb-3">
-                                <h3 class="font-semibold text-gray-800 text-sm">Saving for Children's Education</h3>
-                                <span class="text-rose-500 text-lg">▶</span>
-                            </div>
-                            <p class="text-gray-600 text-xs mb-3">Plan for your children's future</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-medium text-rose-600 uppercase tracking-wide">available</span>
-                                <div class="w-6 h-6 bg-rose-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white text-xs">▶</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Daily Motivation -->
-                <div class="card mb-6 bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 border-pink-200 shadow-lg">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <span class="text-white text-2xl">🌟</span>
-                        </div>
-                        <h3 class="font-bold text-pink-800 mb-2 text-sm">Today's Inspiration</h3>
-                        <p class="text-pink-700 italic text-sm leading-relaxed font-medium">"Financial independence gives you the power to make choices for yourself and your family. Every rupee saved is a step towards freedom."</p>
-                    </div>
-                </div>
-
-                <!-- Progress Tracker -->
-                <div class="card mb-6 bg-gradient-to-r from-pink-100 to-purple-100 border-pink-200">
-                    <h3 class="font-bold text-pink-800 mb-3 text-sm flex items-center justify-center">
-                        <span class="mr-2">📊</span> Your Learning Progress
-                    </h3>
-                    <div class="space-y-3">
+                        <p class="text-gray-600 text-xs mb-3">Turn your skills into income</p>
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-pink-500 text-lg">📚</span>
-                                <span class="text-gray-700 text-xs font-medium">Modules Completed</span>
-                            </div>
-                            <span class="text-purple-600 font-bold text-sm" id="women-modules">0/3</span>
+                            <span class="text-xs font-medium text-purple-500 uppercase tracking-wide">in progress</span>
+                            <div class="w-6 h-6 bg-purple-300 rounded-full flex items-center justify-center">
+                                <span class="text-purple-800 text-xs">▶</span>
                         </div>
+                    </div>
+                </div>
+
+                    <div class="card border-rose-200 bg-rose-100 cursor-pointer" onclick="openWomenModule(3)">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-gray-800 text-sm">Saving for Children's Education</h3>
+                            <span class="text-rose-400 text-lg">▶</span>
+                            </div>
+                        <p class="text-gray-600 text-xs mb-3">Plan for your children's future</p>
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-purple-500 text-lg">💎</span>
-                                <span class="text-gray-700 text-xs font-medium">Points Earned</span>
-                            </div>
-                            <span class="text-pink-600 font-bold text-sm" id="women-points">0</span>
+                            <span class="text-xs font-medium text-rose-500 uppercase tracking-wide">available</span>
+                            <div class="w-6 h-6 bg-rose-300 rounded-full flex items-center justify-center">
+                                <span class="text-rose-800 text-xs">▶</span>
                         </div>
-                        <div class="w-full bg-pink-200 rounded-full h-2">
-                            <div class="bg-gradient-to-r from-pink-400 to-purple-400 h-2 rounded-full transition-all duration-500" style="width: 0%" id="women-progress"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Practical Financial Tips -->
-                <div class="card mb-6 bg-gradient-to-br from-blue-100 to-green-100 border-blue-200">
-                    <h3 class="font-bold text-blue-800 mb-4 text-sm flex items-center justify-center">
-                        <span class="mr-2">💡</span> Practical Money Tips
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-white text-sm">💰</span>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 text-xs font-medium">Save 20% of your income every month</p>
-                                <p class="text-green-600 text-xs">Build an emergency fund for your family</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-white text-sm">📝</span>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 text-xs font-medium">Keep track of all expenses</p>
-                                <p class="text-blue-600 text-xs">Know where your money goes</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-green-400 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-white text-sm">🎯</span>
-                            </div>
-                            <div>
-                                <p class="text-gray-700 text-xs font-medium">Set realistic financial goals</p>
-                                <p class="text-purple-600 text-xs">Plan for your children's education</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Inspiring Women -->
-                <div class="card mb-6 bg-gradient-to-br from-green-100 to-blue-100 border-green-200">
-                    <h2 class="font-bold text-green-800 mb-4 text-sm flex items-center justify-center">
-                        <span class="mr-2">👩‍💼</span> Inspiring Women Leaders
-                    </h2>
-                    
-                    <!-- Kiran Mazumdar-Shaw -->
-                    <div class="space-y-3 mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-blue-400 rounded-2xl flex items-center justify-center shadow-lg">
-                                <span class="text-white text-xl">👩‍🔬</span>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-800 text-sm">Kiran Mazumdar-Shaw</h3>
-                                <p class="text-green-600 font-medium text-xs">Biotechnology Pioneer</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-xs leading-relaxed">
-                            Started Biocon with just ₹10,000 in 1978. Today, she's one of India's richest women, proving that determination and smart financial decisions can overcome any challenge.
-                        </p>
-                        <div class="bg-gradient-to-r from-green-100 to-blue-100 rounded-xl p-3 border border-green-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-green-500 text-sm">💪</span>
-                                <span class="font-bold text-gray-800 text-xs">Her Achievement:</span>
-                            </div>
-                            <p class="text-gray-700 text-xs mt-1">Built India's largest biotech company from scratch</p>
-                        </div>
-                    </div>
-
-                    <!-- Falguni Nayar -->
-                    <div class="space-y-3 mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl flex items-center justify-center shadow-lg">
-                                <span class="text-white text-xl">💼</span>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-800 text-sm">Falguni Nayar</h3>
-                                <p class="text-blue-600 font-medium text-xs">E-commerce Entrepreneur</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-xs leading-relaxed">
-                            Left her successful banking career at 50 to start Nykaa. She shows that it's never too late to follow your dreams and build something meaningful.
-                        </p>
-                        <div class="bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl p-3 border border-blue-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-blue-500 text-sm">🚀</span>
-                                <span class="font-bold text-gray-800 text-xs">Her Success:</span>
-                            </div>
-                            <p class="text-gray-700 text-xs mt-1">Created India's leading beauty e-commerce platform</p>
-                        </div>
-                    </div>
-
-                    <!-- Radhika Gupta -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-green-400 rounded-2xl flex items-center justify-center shadow-lg">
-                                <span class="text-white text-xl">📈</span>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-800 text-sm">Radhika Gupta</h3>
-                                <p class="text-purple-600 font-medium text-xs">Investment Expert</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-xs leading-relaxed">
-                            CEO of Edelweiss Asset Management and a strong advocate for women's financial empowerment. She writes extensively about smart money management.
-                        </p>
-                        <div class="bg-gradient-to-r from-purple-100 to-green-100 rounded-xl p-3 border border-purple-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-purple-500 text-sm">📚</span>
-                                <span class="font-bold text-gray-800 text-xs">Her Mission:</span>
-                            </div>
-                            <p class="text-gray-700 text-xs mt-1">Empowering women through financial education</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Financial Goals -->
-                <div class="card mb-6 bg-gradient-to-br from-green-100 to-blue-100 border-green-200">
-                    <h3 class="font-bold text-green-800 mb-4 text-sm flex items-center justify-center">
-                        <span class="mr-2">🎯</span> Your Financial Goals
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-green-500 text-lg">🏠</span>
-                                <span class="text-gray-700 text-xs font-medium">Emergency fund</span>
-                            </div>
-                            <span class="text-green-500 text-xs font-bold">₹10,000</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-blue-500 text-lg">👶</span>
-                                <span class="text-gray-700 text-xs font-medium">Children's education</span>
-                            </div>
-                            <span class="text-blue-500 text-xs font-bold">₹50,000</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-purple-50 to-green-50 rounded-xl border border-purple-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-purple-500 text-lg">🚗</span>
-                                <span class="text-gray-700 text-xs font-medium">Family vehicle</span>
-                            </div>
-                            <span class="text-purple-500 text-xs font-bold">₹2,00,000</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-green-500 text-lg">🏡</span>
-                                <span class="text-gray-700 text-xs font-medium">Home ownership</span>
-                            </div>
-                            <span class="text-green-500 text-xs font-bold">₹5,00,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Achievement Rewards -->
-                <div class="card mb-6 bg-gradient-to-br from-blue-100 to-green-100 border-blue-200">
-                    <h3 class="font-bold text-blue-800 mb-4 text-sm flex items-center justify-center">
-                        <span class="mr-2">🏆</span> Achievement Rewards
-                    </h3>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between p-2 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-green-500 text-sm">🌟</span>
-                                <span class="text-gray-700 text-xs">Financial Learner</span>
-                            </div>
-                            <span class="text-green-500 text-xs font-bold">Complete 1 module</span>
-                        </div>
-                        <div class="flex items-center justify-between p-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-blue-500 text-sm">💪</span>
-                                <span class="text-gray-700 text-xs">Smart Saver</span>
-                            </div>
-                            <span class="text-blue-500 text-xs font-bold">Complete 2 modules</span>
-                        </div>
-                        <div class="flex items-center justify-between p-2 bg-gradient-to-r from-purple-50 to-green-50 rounded-lg">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-purple-500 text-sm">👑</span>
-                                <span class="text-gray-700 text-xs">Financial Expert</span>
-                            </div>
-                            <span class="text-purple-500 text-xs font-bold">Complete all modules</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Community Support -->
-                <div class="card bg-gradient-to-br from-green-100 to-blue-100 border-green-200">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-green-300 to-blue-300 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                            <span class="text-green-600 text-2xl">🤝</span>
-                        </div>
-                        <h3 class="font-bold text-green-800 mb-2 text-sm">Women's Support Network</h3>
-                        <p class="text-green-600 mb-3 text-xs">
-                            Connect with other women on their financial journey. Share experiences, ask questions, and support each other in building financial independence.
-                        </p>
-                        <div class="bg-gradient-to-r from-green-200 to-blue-200 rounded-xl p-3 border border-green-300">
-                            <p class="text-xs text-green-700 font-bold">Coming Soon</p>
-                            <p class="text-xs text-green-600 mt-1">
-                                A supportive community for women to discuss financial matters
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Rewards Page -->
-        <div id="rewards" class="hidden page bg-gradient-to-br from-orange-50 to-blue-50 px-4 py-4 pb-24">
+        <div id="rewards" class="hidden page bg-gradient-to-br from-orange-100 to-blue-100 px-4 py-4 pb-24">
             <div class="max-w-sm mx-auto">
                 <!-- Header -->
                 <div class="text-center mb-6">
                     <div class="flex items-center justify-center space-x-3 mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-blue-500 rounded-2xl flex items-center justify-center">
-                            <span class="text-white text-xl">🎁</span>
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-300 to-blue-300 rounded-2xl flex items-center justify-center">
+                            <span class="text-orange-800 text-xl">🎁</span>
                         </div>
                         <h1 class="text-2xl font-bold text-gray-800">Points & Rewards</h1>
                     </div>
@@ -674,33 +845,43 @@
         </div>
 
         <!-- Bottom Navigation -->
-        <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 px-2 py-3 z-50 safe-area-bottom">
+        <div class="fixed bottom-0 left-0 right-0 glass border-t border-white/10 px-4 py-4 z-50 safe-area-bottom">
             <div class="flex justify-around items-center max-w-sm mx-auto">
-                <button onclick="showPage('landing')" class="nav-item active text-blue-600 flex-1">
-                    <span class="text-xl">🏠</span>
-                    <span class="text-xs mt-1 font-medium" id="nav-home">Home</span>
+                <button onclick="showPage('landing')" class="nav-item active text-white flex-1 group">
+                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center glow-effect group-hover:scale-110 transition-all duration-300">
+                        <span class="text-white text-xl">🏠</span>
+                    </div>
+                    <span class="text-xs mt-2 font-semibold" id="nav-home">Home</span>
                 </button>
-                <button onclick="showPage('modules')" class="nav-item text-gray-500 flex-1">
-                    <span class="text-xl">📚</span>
-                    <span class="text-xs mt-1 font-medium" id="nav-modules">Modules</span>
+                <button onclick="showPage('modules')" class="nav-item text-gray-400 flex-1 group">
+                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-400 text-xl group-hover:text-white transition-colors duration-300">📚</span>
+                    </div>
+                    <span class="text-xs mt-2 font-semibold" id="nav-modules">Modules</span>
                 </button>
-                <button onclick="showPage('girls-mode')" class="nav-item text-gray-500 flex-1">
-                    <span class="text-xl">🌸</span>
-                    <span class="text-xs mt-1 font-medium" id="nav-women">Women</span>
+                <button onclick="showPage('girls-mode')" class="nav-item text-gray-400 flex-1 group">
+                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-400 text-xl group-hover:text-white transition-colors duration-300">🌸</span>
+                    </div>
+                    <span class="text-xs mt-2 font-semibold" id="nav-women">Women</span>
                 </button>
-                <button onclick="showPage('leaderboard')" class="nav-item text-gray-500 flex-1">
-                    <span class="text-xl">🏆</span>
-                    <span class="text-xs mt-1 font-medium" id="nav-rankings">Rankings</span>
+                <button onclick="showPage('leaderboard')" class="nav-item text-gray-400 flex-1 group">
+                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-400 text-xl group-hover:text-white transition-colors duration-300">🏆</span>
+                    </div>
+                    <span class="text-xs mt-2 font-semibold" id="nav-rankings">Rankings</span>
                 </button>
-                <button onclick="showPage('rewards')" class="nav-item text-gray-500 flex-1">
-                    <span class="text-xl">🎁</span>
-                    <span class="text-xs mt-1 font-medium" id="nav-rewards">Rewards</span>
+                <button onclick="showPage('rewards')" class="nav-item text-gray-400 flex-1 group">
+                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-400 text-xl group-hover:text-white transition-colors duration-300">🎁</span>
+                    </div>
+                    <span class="text-xs mt-2 font-semibold" id="nav-rewards">Rewards</span>
                 </button>
             </div>
         </div>
 
         <!-- Leaderboard Page -->
-        <div id="leaderboard" class="hidden page bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 px-4 py-4 pb-24">
+        <div id="leaderboard" class="hidden page bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100 px-4 py-4 pb-24">
             <div class="max-w-sm mx-auto">
                 <!-- Header -->
                 <div class="text-center mb-6">
@@ -804,7 +985,7 @@
         </div>
 
         <!-- AI Assistant Page -->
-        <div id="ai-assistant" class="hidden page bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50 px-4 py-4 pb-24">
+        <div id="ai-assistant" class="hidden page bg-gradient-to-br from-indigo-100 via-purple-100 to-blue-100 px-4 py-4 pb-24">
             <div class="max-w-sm mx-auto">
                 <!-- Header -->
                 <div class="text-center mb-6">
@@ -880,7 +1061,7 @@
                     </h3>
                     <div class="space-y-2">
                         <div class="flex items-start space-x-2">
-                            <span class="text-purple-500 text-sm">🎯</span>
+                            <span class="text-purple-400 text-sm">🎯</span>
                             <p class="text-gray-700 text-xs">Be specific with your questions for better answers</p>
                         </div>
                         <div class="flex items-start space-x-2">
@@ -888,7 +1069,7 @@
                             <p class="text-gray-700 text-xs">Ask about your specific financial situation</p>
                         </div>
                         <div class="flex items-start space-x-2">
-                            <span class="text-purple-500 text-sm">🔄</span>
+                            <span class="text-purple-400 text-sm">🔄</span>
                             <p class="text-gray-700 text-xs">Follow up with more questions if needed</p>
                         </div>
                     </div>
@@ -1195,83 +1376,90 @@
             }
         }
 
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('[id="landing"], [id="modules"], [id="girls-mode"], [id="leaderboard"], [id="rewards"], [id="ai-assistant"]').forEach(page => {
-                page.classList.add('hidden');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.remove('hidden');
-            
-            // Update navigation
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active', 'text-blue-600');
-                item.classList.add('text-gray-500');
-            });
-            
-            event.target.closest('.nav-item').classList.add('active', 'text-blue-600');
-            event.target.closest('.nav-item').classList.remove('text-gray-500');
-            
-            currentPage = pageId;
-            
-            // Update Princess Mode if it's the current page
-            if (pageId === 'girls-mode') {
-                updatePrincessMode();
-            }
-            
-            // Update Leaderboard if it's the current page
-            if (pageId === 'leaderboard') {
-                updateLeaderboard();
-            }
-        }
-
-        // Access Code Functions
-        function showAccessCode() {
-            document.getElementById('access-code-modal').classList.remove('hidden');
-        }
-
-        function closeAccessCode() {
-            document.getElementById('access-code-modal').classList.add('hidden');
-            document.getElementById('access-code-input').value = '';
-        }
-
-        function verifyAccessCode() {
-            const code = document.getElementById('access-code-input').value.toUpperCase();
-            const validCodes = ['UDAAAN1', 'WOMEN01', 'ACCESS1'];
-            
-            if (validCodes.includes(code)) {
-                hasAccess = true;
-                closeAccessCode();
-                showSuccessMessage('Access granted! All modules are now unlocked! 🎉');
+        function getModuleContent() {
+            if (currentLanguage === 'hi') {
+                return {
+                    1: {
+                        title: 'त्योहारों के लिए बचत',
+                        content: 'त्योहार हमारी संस्कृति का महत्वपूर्ण हिस्सा हैं, लेकिन ये महंगे भी हो सकते हैं। त्योहारों के लिए बचत सीखना आपको इन खास पलों का आनंद बिना वित्तीय तनाव के उठाने में मदद करता है। हर महीने त्योहारों के खर्चों के लिए एक छोटी राशि अलग रखना शुरू करें। इस तरह, जब समय आएगा, आपके पास पैसे तैयार होंगे और आपको उधार लेने या अन्य खर्चों में समझौता करने की जरूरत नहीं होगी।',
+                        questions: [
+                            {
+                                question: 'त्योहारों के लिए बचत का सबसे अच्छा तरीका क्या है?',
+                                options: ['एक साथ सारा पैसा बचाएं', 'हर महीने छोटी राशि अलग रखें', 'जरूरत पड़ने पर उधार लें', 'त्योहार छोड़ दें'],
+                                correct: 1
+                            },
+                            {
+                                question: 'त्योहारों के लिए आदर्श रूप से कितना बचाना चाहिए?',
+                                options: ['₹500-1000', '₹2000-3000', '₹5000+', 'जो भी बचे'],
+                                correct: 0
+                            },
+                            {
+                                question: 'अगर आप त्योहार का खर्च नहीं उठा सकते तो क्या करना चाहिए?',
+                                options: ['पैसे उधार लें', 'खर्च छोड़ दें', 'क्रेडिट कार्ड का उपयोग करें', 'अगले साल के लिए बेहतर योजना बनाएं'],
+                                correct: 3
+                            },
+                            {
+                                question: 'त्योहार के किस खर्च के लिए बजट बनाना सबसे जरूरी है?',
+                                options: ['नए कपड़े', 'खाना और मिठाई', 'परिवार के लिए उपहार', 'उपरोक्त सभी'],
+                                correct: 3
+                            }
+                        ]
+                    },
+                    2: {
+                        title: 'स्कूटर खरीदना',
+                        content: 'स्कूटर दैनिक परिवहन के लिए एक बेहतरीन निवेश हो सकता है, लेकिन सही विकल्प चुनना महत्वपूर्ण है। अपने बजट, ईंधन दक्षता, रखरखाव लागत और पुनर्विक्रय मूल्य पर विचार करें। केवल प्रारंभिक कीमत को न देखें - समय के साथ स्वामित्व की कुल लागत के बारे में सोचें। विभिन्न मॉडलों पर शोध करें, कीमतों की तुलना करें और नए और पुराने दोनों विकल्पों पर विचार करें।',
+                        questions: [
+                            {
+                                question: 'स्कूटर खरीदते समय क्या विचार करना चाहिए?',
+                                options: ['केवल प्रारंभिक कीमत', 'स्वामित्व की कुल लागत', 'केवल रंग', 'केवल ब्रांड नाम'],
+                                correct: 1
+                            },
+                            {
+                                question: 'ईंधन दक्षता के लिए सबसे महत्वपूर्ण कारक क्या है?',
+                                options: ['इंजन का आकार', 'ब्रांड नाम', 'नियमित रखरखाव', 'रंग'],
+                                correct: 2
+                            },
+                            {
+                                question: 'पुराना स्कूटर कब खरीदना बेहतर है?',
+                                options: ['कभी नहीं', 'जब बजट सीमित हो', 'केवल नए सवारों के लिए', 'हमेशा'],
+                                correct: 1
+                            },
+                            {
+                                question: 'पुराना स्कूटर खरीदने से पहले क्या जांचना चाहिए?',
+                                options: ['केवल कीमत', 'सर्विस इतिहास और हालत', 'केवल माइलेज', 'केवल रंग'],
+                                correct: 1
+                            }
+                        ]
+                    },
+                    3: {
+                        title: 'लोन की बुनियादी बातें',
+                        content: 'लोन तब मददगार हो सकते हैं जब आपको महत्वपूर्ण खरीदारी के लिए पैसों की जरूरत हो, लेकिन यह समझना महत्वपूर्ण है कि वे कैसे काम करते हैं। विभिन्न प्रकार के लोन की अलग-अलग ब्याज दरें और शर्तें होती हैं। हमेशा छोटे प्रिंट को पढ़ें, आप जो कुल राशि वापस करेंगे उसे समझें, और सुनिश्चित करें कि आप मासिक भुगतान वहन कर सकते हैं। अच्छा क्रेडिट इतिहास आपको बेहतर लोन शर्तें प्राप्त करने में मदद कर सकता है।',
+                        questions: [
+                            {
+                                question: 'लोन लेते समय सबसे महत्वपूर्ण क्या है?',
+                                options: ['जल्दी पैसा मिलना', 'शर्तों और ब्याज को समझना', 'सबसे बड़ी राशि चुनना', 'दस्तावेज न पढ़ना'],
+                                correct: 1
+                            },
+                            {
+                                question: 'अच्छा ऋण-से-आय अनुपात क्या है?',
+                                options: ['50% या कम', '70% या कम', '90% या कम', '100%'],
+                                correct: 0
+                            },
+                            {
+                                question: 'अगर आप लोन भुगतान चूक जाते हैं तो क्या होता है?',
+                                options: ['कुछ नहीं', 'देर शुल्क और क्रेडिट क्षति', 'मुफ्त पैसा', 'कम ब्याज दर'],
+                                correct: 1
+                            },
+                            {
+                                question: 'अपना क्रेडिट स्कोर बेहतर बनाने का सबसे अच्छा तरीका क्या है?',
+                                options: ['अधिक लोन लें', 'बिल समय पर भरें', 'सभी लोन से बचें', 'केवल नकद का उपयोग करें'],
+                                correct: 1
+                            }
+                        ]
+                    }
+                };
             } else {
-                showErrorMessage('Invalid access code. Please try again.');
-            }
-        }
-
-        function startFreeTrial() {
-            if (freeTrialUsed) {
-                showErrorMessage('Free trial already used. Please enter an access code.');
-                return;
-            }
-            freeTrialUsed = true;
-            hasAccess = true;
-            showSuccessMessage('Free trial started! You can access 3 modules. 🆓');
-        }
-
-        // Module Functions
-        function openModule(moduleId) {
-            if (!hasAccess && !freeTrialUsed) {
-                showErrorMessage('Please choose an access method first.');
-                return;
-            }
-            
-            if (freeTrialUsed && moduleId > 3) {
-                showErrorMessage('Free trial limited to 3 modules. Enter access code for more.');
-                return;
-            }
-
-            const modules = {
+                return {
                 1: {
                     title: 'Saving for Festivals',
                     content: 'Festivals are an important part of our culture, but they can also be expensive. Learning to save for festivals helps you enjoy these special moments without financial stress. Start by setting aside a small amount each month specifically for festival expenses. This way, when the time comes, you\'ll have the money ready and won\'t need to borrow or compromise on other expenses.',
@@ -1351,6 +1539,86 @@
                     ]
                 }
             };
+            }
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('[id="landing"], [id="modules"], [id="girls-mode"], [id="leaderboard"], [id="rewards"], [id="ai-assistant"]').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active', 'text-blue-600');
+                item.classList.add('text-gray-500');
+            });
+            
+            event.target.closest('.nav-item').classList.add('active', 'text-blue-600');
+            event.target.closest('.nav-item').classList.remove('text-gray-500');
+            
+            currentPage = pageId;
+            
+            // Update Princess Mode if it's the current page
+            if (pageId === 'girls-mode') {
+                updatePrincessMode();
+            }
+            
+            // Update Leaderboard if it's the current page
+            if (pageId === 'leaderboard') {
+                updateLeaderboard();
+            }
+        }
+
+        // Access Code Functions
+        function showAccessCode() {
+            document.getElementById('access-code-modal').classList.remove('hidden');
+        }
+
+        function closeAccessCode() {
+            document.getElementById('access-code-modal').classList.add('hidden');
+            document.getElementById('access-code-input').value = '';
+        }
+
+        function verifyAccessCode() {
+            const code = document.getElementById('access-code-input').value.toUpperCase();
+            const validCodes = ['UDAAAN1', 'WOMEN01', 'ACCESS1'];
+            
+            if (validCodes.includes(code)) {
+                hasAccess = true;
+                closeAccessCode();
+                showSuccessMessage('Access granted! All modules are now unlocked! 🎉');
+            } else {
+                showErrorMessage('Invalid access code. Please try again.');
+            }
+        }
+
+        function startFreeTrial() {
+            if (freeTrialUsed) {
+                showErrorMessage('Free trial already used. Please enter an access code.');
+                return;
+            }
+            freeTrialUsed = true;
+            hasAccess = true;
+            showSuccessMessage('Free trial started! You can access 3 modules. 🆓');
+        }
+
+        // Module Functions
+        function openModule(moduleId) {
+            if (!hasAccess && !freeTrialUsed) {
+                showErrorMessage('Please choose an access method first.');
+                return;
+            }
+            
+            if (freeTrialUsed && moduleId > 3) {
+                showErrorMessage('Free trial limited to 3 modules. Enter access code for more.');
+                return;
+            }
+
+            const modules = getModuleContent();
 
             currentModule = modules[moduleId];
             if (currentModule) {
@@ -1478,7 +1746,7 @@
             
             question.options.forEach((option, index) => {
                 const button = document.createElement('button');
-                button.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-gray-200 hover:border-gray-300';
+                button.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-gray-200 hover:border-gray-300 text-gray-800 bg-white';
                 button.textContent = option;
                 button.onclick = () => selectQuizAnswer(index, button);
                 optionsContainer.appendChild(button);
@@ -1492,11 +1760,11 @@
         function selectQuizAnswer(index, button) {
             // Reset all buttons
             document.querySelectorAll('#quiz-options button').forEach(btn => {
-                btn.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-gray-200 hover:border-gray-300';
+                btn.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-gray-200 hover:border-gray-300 text-gray-800 bg-white';
             });
             
             // Highlight selected button
-            button.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-blue-500 bg-blue-50';
+            button.className = 'w-full text-left p-3 rounded-xl border-2 transition-all text-sm border-blue-500 bg-blue-50 text-blue-800';
             
             selectedQuizAnswer = index;
             document.getElementById('complete-btn').disabled = false;
@@ -1842,3 +2110,5 @@
     </script>
 </body>
 </html>
+
+
