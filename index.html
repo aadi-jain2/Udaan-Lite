@@ -13,38 +13,58 @@
     <style>
         * { -webkit-tap-highlight-color: transparent; }
         body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            font-family: 'Georgia', 'Times New Roman', serif; 
             font-weight: 400; 
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed 50%, #c026d3 75%, #db2777 100%);
-            color: #1f2937;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #ffffe0 0%, #fffacd 25%, #f0e68c 50%, #daa520 75%, #b8860b 100%);
+            background-attachment: fixed;
+            color: #2c1810;
             min-height: 100vh;
             line-height: 1.6;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0e68c' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23daa520' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
         }
         .mobile-container { max-width: 100vw; margin: 0 auto; }
         
-        /* Professional Button Styles */
+        /* Vintage Button Styles */
         .btn-primary { 
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: #ffffff;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #cd853f 100%);
+            color: #f5f5dc;
             font-weight: 600;
             padding: 16px 28px;
-            border-radius: 16px;
+            border-radius: 8px;
             box-shadow: 
-                0 10px 25px rgba(59, 130, 246, 0.25),
-                0 4px 12px rgba(29, 78, 216, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 4px 8px rgba(139, 69, 19, 0.3),
+                0 2px 4px rgba(101, 67, 33, 0.2),
+                inset 0 1px 0 rgba(245, 245, 220, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
+            border: 2px solid #654321;
             font-size: 15px;
             width: 100%;
             position: relative;
             overflow: hidden;
             letter-spacing: 0.025em;
+            font-family: 'Georgia', serif;
         }
         .btn-primary::before {
             content: '';
@@ -60,37 +80,39 @@
             left: 100%;
         }
         .btn-primary:hover { 
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             box-shadow: 
-                0 15px 35px rgba(59, 130, 246, 0.35),
-                0 8px 20px rgba(29, 78, 216, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                0 6px 12px rgba(139, 69, 19, 0.4),
+                0 3px 6px rgba(101, 67, 33, 0.3),
+                inset 0 1px 0 rgba(245, 245, 220, 0.3);
+            background: linear-gradient(135deg, #a0522d 0%, #cd853f 50%, #daa520 100%);
         }
         .btn-primary:active { 
             transform: translateY(0px);
             box-shadow: 
-                0 6px 20px rgba(59, 130, 246, 0.3),
-                0 3px 8px rgba(29, 78, 216, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 2px 4px rgba(139, 69, 19, 0.3),
+                0 1px 2px rgba(101, 67, 33, 0.2),
+                inset 0 1px 0 rgba(245, 245, 220, 0.1);
         }
         
         .btn-secondary { 
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: #ffffff;
+            background: linear-gradient(135deg, #654321 0%, #8b4513 50%, #a0522d 100%);
+            color: #f5f5dc;
             font-weight: 600;
             padding: 16px 28px;
-            border-radius: 16px;
+            border-radius: 8px;
             box-shadow: 
-                0 10px 25px rgba(139, 92, 246, 0.25),
-                0 4px 12px rgba(124, 58, 237, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 4px 8px rgba(101, 67, 33, 0.3),
+                0 2px 4px rgba(139, 69, 19, 0.2),
+                inset 0 1px 0 rgba(245, 245, 220, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
+            border: 2px solid #4a2c17;
             font-size: 15px;
             width: 100%;
             position: relative;
             overflow: hidden;
             letter-spacing: 0.025em;
+            font-family: 'Georgia', serif;
         }
         .btn-secondary::before {
             content: '';
@@ -120,30 +142,43 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
-        /* Professional Card Styles */
+        /* Vintage Paper Card Styles */
         .card { 
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(24px);
-            border-radius: 20px;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(160, 82, 45, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, #f5f5dc 0%, #f0e68c 100%);
+            border-radius: 12px;
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.08),
-                0 8px 24px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                0 8px 16px rgba(139, 69, 19, 0.2),
+                0 4px 8px rgba(101, 67, 33, 0.15),
+                inset 0 1px 0 rgba(245, 245, 220, 0.8);
             padding: 24px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid #d2b48c;
             position: relative;
             overflow: hidden;
+            font-family: 'Georgia', serif;
         }
+        
         .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d2b48c' fill-opacity='0.1'%3E%3Ccircle cx='10' cy='10' r='0.5'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
         }
+        
+        .card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
         .card:hover { 
             transform: translateY(-8px);
             box-shadow: 
@@ -157,36 +192,57 @@
                 0 4px 10px rgba(240, 147, 251, 0.1);
         }
         
-        /* Modern Navigation Styles */
+        /* Enhanced Navigation Styles */
         .nav-item { 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px;
-            border-radius: 24px;
+            padding: 16px 12px;
+            border-radius: 20px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 60px;
+            min-width: 70px;
             position: relative;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         .nav-item.active { 
             color: #ffffff;
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.08);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
             box-shadow: 
-                0 4px 16px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 8px 25px rgba(59, 130, 246, 0.3),
+                0 4px 16px rgba(139, 92, 246, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            animation: navPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes navPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 8px 25px rgba(59, 130, 246, 0.3),
+                    0 4px 16px rgba(139, 92, 246, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 12px 35px rgba(59, 130, 246, 0.4),
+                    0 6px 20px rgba(139, 92, 246, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
         }
         .nav-item:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
         .nav-item:active {
-            transform: scale(0.95);
+            transform: scale(0.98);
         }
         
         /* Page Animations */
@@ -333,13 +389,28 @@
             }
         }
         
-        /* Gradient Text */
+        /* Clear Vintage Text */
         .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #8b4513;
+            font-family: 'Georgia', serif;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(139, 69, 19, 0.2);
         }
+        
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        /* Clear main title */
+        #app-title {
+            text-shadow: 0 2px 4px rgba(139, 69, 19, 0.3);
+        }
+        
         
         /* Glass Effect */
         .glass {
@@ -348,31 +419,34 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Professional Neumorphism Effect */
+        /* Vintage Neumorphism Effect */
         .neumorphism {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            background: linear-gradient(135deg, #f5f5dc 0%, #f0e68c 100%);
             box-shadow: 
-                0 8px 24px rgba(0, 0, 0, 0.08),
-                0 4px 12px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                0 8px 16px rgba(139, 69, 19, 0.2),
+                0 4px 8px rgba(101, 67, 33, 0.15),
+                inset 0 1px 0 rgba(245, 245, 220, 0.8);
+            border: 1px solid #d2b48c;
         }
         
-        /* Professional Typography */
+        /* Vintage Typography */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
-            letter-spacing: -0.025em;
+            letter-spacing: 0.025em;
             line-height: 1.2;
+            font-family: 'Georgia', serif;
+            color: #2c1810;
         }
         
         .text-gradient {
-            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .text-gradient-secondary {
-            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #cd853f 0%, #daa520 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -422,7 +496,7 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-900 via-black to-gray-800">
+<body>
     <div class="status-bar"></div>
     <div id="app" class="mobile-container">
         <!-- Landing Page -->
@@ -463,9 +537,9 @@
                 <div class="max-w-4xl mx-auto">
                     <!-- Main Title -->
                     <div class="mb-12 slide-in-down">
-                    <h1 class="text-7xl md:text-8xl font-bold gradient-text mb-6 tracking-tight" id="app-title">Udaan</h1>
-                    <p class="text-2xl md:text-3xl text-white font-light mb-4" id="app-subtitle">Financial Literacy</p>
-                    <p class="text-lg text-white/90 font-medium max-w-2xl mx-auto leading-relaxed" id="app-tagline">Learn to Earn - Empowering Financial Dreams in Every City</p>
+                    <h1 class="text-8xl md:text-9xl font-bold gradient-text mb-6 tracking-tight" id="app-title">Udaan</h1>
+                    <p class="text-2xl md:text-3xl text-amber-800 font-light mb-4" id="app-subtitle">Financial Literacy</p>
+                    <p class="text-lg text-amber-700 font-medium max-w-2xl mx-auto leading-relaxed" id="app-tagline">Learn to Earn - Empowering Financial Dreams in Every City</p>
                     </div>
 
                     <!-- Logo Area -->
@@ -691,13 +765,13 @@
                 <div class="card mb-6 bg-gradient-to-r from-pink-200 to-rose-200 border-pink-300 cursor-pointer" onclick="openWomenModule(1)">
                     <div class="flex items-center justify-between">
                         <div class="flex-1">
-                            <h2 class="text-lg font-bold text-pink-800 mb-1">Shopping While Saving</h2>
-                            <p class="text-sm text-pink-700 mb-3">Chapter 1</p>
+                            <h2 class="text-lg font-bold text-pink-800 mb-1" id="shopping-while-saving">Shopping While Saving</h2>
+                            <p class="text-sm text-pink-700 mb-3" id="chapter-1">Chapter 1</p>
                             <div class="flex items-center space-x-2">
                                 <div class="w-20 bg-pink-300 rounded-full h-2">
                                     <div class="bg-pink-500 h-2 rounded-full" style="width: 25%"></div>
                             </div>
-                                <span class="text-xs text-pink-600 font-medium">25% complete</span>
+                                <span class="text-xs text-pink-600 font-medium" id="progress-text">25% complete</span>
                         </div>
                             </div>
                         <div class="w-16 h-16 bg-gradient-to-br from-pink-300 to-rose-300 rounded-2xl flex items-center justify-center ml-4">
@@ -1074,38 +1148,38 @@
             </div>
         </div>
 
-        <!-- Bottom Navigation -->
-        <div class="fixed bottom-0 left-0 right-0 glass border-t border-white/10 px-4 py-4 z-50 safe-area-bottom">
-            <div class="flex justify-around items-center max-w-sm mx-auto">
+        <!-- Enhanced Bottom Navigation -->
+        <div class="fixed bottom-0 left-0 right-0 glass border-t border-white/20 px-6 py-5 z-50 safe-area-bottom shadow-2xl">
+            <div class="flex justify-around items-center max-w-md mx-auto">
                 <button onclick="showPage('landing', event)" class="nav-item active text-gray-600 flex-1 group">
-                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center glow-effect group-hover:scale-110 transition-all duration-300">
-                        <span class="text-gray-600 text-xl group-hover:text-gray-800">🏠</span>
+                    <div class="w-16 h-16 neumorphism rounded-2xl flex items-center justify-center glow-effect group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-600 text-2xl group-hover:text-gray-800">🏠</span>
                     </div>
-                    <span class="text-xs mt-2 font-semibold" id="nav-home">Home</span>
+                    <span class="text-sm mt-2 font-semibold" id="nav-home">Home</span>
                 </button>
                 <button onclick="showPage('modules', event)" class="nav-item text-gray-600 flex-1 group">
-                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                        <span class="text-gray-600 text-xl group-hover:text-gray-800 transition-colors duration-300">📚</span>
+                    <div class="w-16 h-16 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-600 text-2xl group-hover:text-gray-800 transition-colors duration-300">📚</span>
                     </div>
-                    <span class="text-xs mt-2 font-semibold" id="nav-modules">Modules</span>
+                    <span class="text-sm mt-2 font-semibold" id="nav-modules">Modules</span>
                 </button>
                 <button onclick="showPage('girls-mode', event)" class="nav-item text-gray-600 flex-1 group">
-                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                        <span class="text-gray-600 text-xl group-hover:text-gray-800 transition-colors duration-300">🌸</span>
+                    <div class="w-16 h-16 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-600 text-2xl group-hover:text-gray-800 transition-colors duration-300">🌸</span>
                     </div>
-                    <span class="text-xs mt-2 font-semibold" id="nav-women">Women</span>
+                    <span class="text-sm mt-2 font-semibold" id="nav-women">Women</span>
                 </button>
                 <button onclick="showPage('local-business', event)" class="nav-item text-gray-600 flex-1 group">
-                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                        <span class="text-gray-600 text-xl group-hover:text-gray-800 transition-colors duration-300">💼</span>
+                    <div class="w-16 h-16 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-600 text-2xl group-hover:text-gray-800 transition-colors duration-300">💼</span>
                     </div>
-                    <span class="text-xs mt-2 font-semibold" id="nav-business">Business</span>
+                    <span class="text-sm mt-2 font-semibold" id="nav-business">Business</span>
                 </button>
                 <button onclick="showPage('rewards', event)" class="nav-item text-gray-600 flex-1 group">
-                    <div class="w-14 h-14 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                        <span class="text-gray-600 text-xl group-hover:text-gray-800 transition-colors duration-300">🎁</span>
+                    <div class="w-16 h-16 neumorphism rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                        <span class="text-gray-600 text-2xl group-hover:text-gray-800 transition-colors duration-300">🎁</span>
                     </div>
-                    <span class="text-xs mt-2 font-semibold" id="nav-rewards">Rewards</span>
+                    <span class="text-sm mt-2 font-semibold" id="nav-rewards">Rewards</span>
                 </button>
             </div>
         </div>
@@ -1407,6 +1481,7 @@
                 'nav-home': 'Home',
                 'nav-modules': 'Modules',
                 'nav-women': 'Women',
+                'nav-business': 'Business',
                 'nav-rankings': 'Rankings',
                 'nav-rewards': 'Rewards',
                 'footer-text': 'Empowering financial literacy across India',
@@ -1505,6 +1580,14 @@
                 'savings-calculator': 'Savings Goal Calculator',
                 'budget-planner': 'Monthly Budget Planner',
                 'investment-calculator': 'Investment Returns Calculator',
+                // Girls Mode specific translations
+                'shopping-while-saving': 'Shopping While Saving',
+                'chapter-1': 'Chapter 1',
+                'complete': 'complete',
+                'womens-progress': 'Your Progress',
+                'womens-points': 'Points Earned',
+                'womens-modules': 'Women\'s Modules',
+                'progress-text': '25% complete',
                 // Additional translations
                 'cash-prize-2': 'Cash Prize',
                 'cash-prize-3': 'Cash Prize',
@@ -1523,6 +1606,7 @@
                 'nav-home': 'होम',
                 'nav-modules': 'मॉड्यूल',
                 'nav-women': 'महिलाएं',
+                'nav-business': 'व्यवसाय',
                 'nav-rankings': 'रैंकिंग',
                 'nav-rewards': 'इनाम',
                 'footer-text': 'भारत में वित्तीय साक्षरता को बढ़ावा देना',
@@ -1605,6 +1689,30 @@
                 'ai-tip-1': 'अपने सवालों में विशिष्ट रहें',
                 'ai-tip-2': 'अपने वित्तीय लक्ष्यों के बारे में पूछें',
                 'ai-tip-3': 'आवश्यकता हो तो और सवाल पूछें',
+                // Local Business & Opportunities
+                'local-business-title': 'स्थानीय व्यवसाय के अवसर',
+                'local-business-subtitle': 'अपने शहर में कमाई शुरू करें',
+                'business-idea-1': 'घर आधारित खाद्य व्यवसाय',
+                'business-idea-2': 'ऑनलाइन ट्यूशन सेवाएं',
+                'business-idea-3': 'हस्तशिल्प और कला बिक्री',
+                'business-idea-4': 'स्थानीय डिलीवरी सेवाएं',
+                'business-idea-5': 'सौंदर्य और कल्याण सेवाएं',
+                'business-idea-6': 'स्थानीय दुकानों के लिए डिजिटल मार्केटिंग',
+                // Practical Tools
+                'tools-title': 'वित्तीय उपकरण',
+                'tools-subtitle': 'अपने वित्त की गणना और योजना बनाएं',
+                'emi-calculator': 'EMI कैलकुलेटर',
+                'savings-calculator': 'बचत लक्ष्य कैलकुलेटर',
+                'budget-planner': 'मासिक बजट योजनाकार',
+                'investment-calculator': 'निवेश रिटर्न कैलकुलेटर',
+                // Girls Mode specific translations
+                'shopping-while-saving': 'बचत करते हुए खरीदारी',
+                'chapter-1': 'अध्याय 1',
+                'complete': 'पूर्ण',
+                'womens-progress': 'आपकी प्रगति',
+                'womens-points': 'अर्जित अंक',
+                'womens-modules': 'महिलाओं के मॉड्यूल',
+                'progress-text': '25% पूर्ण',
                 // Additional translations
                 'cash-prize-2': 'नकद पुरस्कार',
                 'cash-prize-3': 'नकद पुरस्कार',
