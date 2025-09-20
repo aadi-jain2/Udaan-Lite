@@ -21,11 +21,11 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                linear-gradient(135deg, #ffffe0 0%, #fffacd 25%, #f0e68c 50%, #daa520 75%, #b8860b 100%);
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #dbeafe 0%, #bfdbfe 25%, #93c5fd 50%, #60a5fa 75%, #3b82f6 100%);
             background-attachment: fixed;
-            color: #2c1810;
+            color: #1e40af;
             min-height: 100vh;
             line-height: 1.6;
             position: relative;
@@ -39,8 +39,8 @@
             right: 0;
             bottom: 0;
             background: 
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0e68c' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23daa520' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E");
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2360a5fa' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 0;
         }
@@ -48,23 +48,23 @@
         
         /* Vintage Button Styles */
         .btn-primary { 
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #cd853f 100%);
-            color: #f5f5dc;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            color: #ffffff;
             font-weight: 600;
             padding: 16px 28px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 
-                0 4px 8px rgba(139, 69, 19, 0.3),
-                0 2px 4px rgba(101, 67, 33, 0.2),
-                inset 0 1px 0 rgba(245, 245, 220, 0.2);
+                0 4px 8px rgba(59, 130, 246, 0.3),
+                0 2px 4px rgba(96, 165, 250, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid #654321;
+            border: 2px solid #1e40af;
             font-size: 15px;
             width: 100%;
             position: relative;
             overflow: hidden;
             letter-spacing: 0.025em;
-            font-family: 'Georgia', serif;
+            font-family: 'Inter', sans-serif;
         }
         .btn-primary::before {
             content: '';
@@ -82,37 +82,37 @@
         .btn-primary:hover { 
             transform: translateY(-1px);
             box-shadow: 
-                0 6px 12px rgba(139, 69, 19, 0.4),
-                0 3px 6px rgba(101, 67, 33, 0.3),
-                inset 0 1px 0 rgba(245, 245, 220, 0.3);
-            background: linear-gradient(135deg, #a0522d 0%, #cd853f 50%, #daa520 100%);
+                0 6px 12px rgba(59, 130, 246, 0.4),
+                0 3px 6px rgba(96, 165, 250, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
         }
         .btn-primary:active { 
             transform: translateY(0px);
             box-shadow: 
-                0 2px 4px rgba(139, 69, 19, 0.3),
-                0 1px 2px rgba(101, 67, 33, 0.2),
-                inset 0 1px 0 rgba(245, 245, 220, 0.1);
+                0 2px 4px rgba(59, 130, 246, 0.3),
+                0 1px 2px rgba(96, 165, 250, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .btn-secondary { 
-            background: linear-gradient(135deg, #654321 0%, #8b4513 50%, #a0522d 100%);
-            color: #f5f5dc;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+            color: #1e40af;
             font-weight: 600;
             padding: 16px 28px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 
-                0 4px 8px rgba(101, 67, 33, 0.3),
-                0 2px 4px rgba(139, 69, 19, 0.2),
-                inset 0 1px 0 rgba(245, 245, 220, 0.2);
+                0 4px 8px rgba(203, 213, 225, 0.3),
+                0 2px 4px rgba(226, 232, 240, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid #4a2c17;
+            border: 2px solid #cbd5e1;
             font-size: 15px;
             width: 100%;
             position: relative;
             overflow: hidden;
             letter-spacing: 0.025em;
-            font-family: 'Georgia', serif;
+            font-family: 'Inter', sans-serif;
         }
         .btn-secondary::before {
             content: '';
@@ -145,20 +145,20 @@
         /* Vintage Paper Card Styles */
         .card { 
             background: 
-                radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(160, 82, 45, 0.05) 0%, transparent 50%),
-                linear-gradient(135deg, #f5f5dc 0%, #f0e68c 100%);
-            border-radius: 12px;
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(96, 165, 250, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 16px;
             box-shadow: 
-                0 8px 16px rgba(139, 69, 19, 0.2),
-                0 4px 8px rgba(101, 67, 33, 0.15),
-                inset 0 1px 0 rgba(245, 245, 220, 0.8);
+                0 8px 16px rgba(59, 130, 246, 0.15),
+                0 4px 8px rgba(96, 165, 250, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             padding: 24px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid #d2b48c;
+            border: 2px solid #dbeafe;
             position: relative;
             overflow: hidden;
-            font-family: 'Georgia', serif;
+            font-family: 'Inter', sans-serif;
         }
         
         .card::before {
@@ -169,7 +169,7 @@
             right: 0;
             bottom: 0;
             background: 
-                url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d2b48c' fill-opacity='0.1'%3E%3Ccircle cx='10' cy='10' r='0.5'/%3E%3C/g%3E%3C/svg%3E");
+                url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%233b82f6' fill-opacity='0.08'%3E%3Ccircle cx='10' cy='10' r='0.5'/%3E%3C/g%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 0;
         }
@@ -182,14 +182,14 @@
         .card:hover { 
             transform: translateY(-8px);
             box-shadow: 
-                0 20px 40px rgba(102, 126, 234, 0.3),
-                0 8px 20px rgba(240, 147, 251, 0.2);
+                0 20px 40px rgba(59, 130, 246, 0.25),
+                0 8px 20px rgba(96, 165, 250, 0.15);
         }
         .card:active { 
             transform: translateY(-4px);
             box-shadow: 
-                0 12px 24px rgba(102, 126, 234, 0.2),
-                0 4px 10px rgba(240, 147, 251, 0.1);
+                0 12px 24px rgba(59, 130, 246, 0.2),
+                0 4px 10px rgba(96, 165, 250, 0.1);
         }
         
         /* Enhanced Navigation Styles */
@@ -391,10 +391,15 @@
         
         /* Clear Vintage Text */
         .gradient-text {
-            color: #8b4513;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #60a5fa 50%, #93c5fd 75%, #dbeafe 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-family: 'Georgia', serif;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(139, 69, 19, 0.2);
+            animation: gradientShift 4s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
         }
         
         @keyframes gradientShift {
@@ -408,7 +413,7 @@
         
         /* Clear main title */
         #app-title {
-            text-shadow: 0 2px 4px rgba(139, 69, 19, 0.3);
+            text-shadow: 0 2px 4px rgba(59, 130, 246, 0.3), 0 4px 8px rgba(96, 165, 250, 0.2);
         }
         
         
@@ -421,12 +426,12 @@
         
         /* Vintage Neumorphism Effect */
         .neumorphism {
-            background: linear-gradient(135deg, #f5f5dc 0%, #f0e68c 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             box-shadow: 
-                0 8px 16px rgba(139, 69, 19, 0.2),
-                0 4px 8px rgba(101, 67, 33, 0.15),
-                inset 0 1px 0 rgba(245, 245, 220, 0.8);
-            border: 1px solid #d2b48c;
+                0 8px 16px rgba(59, 130, 246, 0.15),
+                0 4px 8px rgba(96, 165, 250, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border: 1px solid #dbeafe;
         }
         
         /* Vintage Typography */
@@ -557,7 +562,7 @@
                             <span class="text-white text-2xl">✨</span>
                             </div>
                         <div class="absolute -bottom-8 -left-12 w-14 h-14 neumorphism rounded-full flex items-center justify-center float" style="animation-delay: 1s;">
-                            <span class="text-white text-xl">💎</span>
+                            <span class="text-white text-xl">💰</span>
                         </div>
                         <div class="absolute top-1/2 -right-12 w-12 h-12 neumorphism rounded-full flex items-center justify-center float" style="animation-delay: 2s;">
                             <span class="text-white text-lg">🚀</span>
@@ -598,14 +603,9 @@
 
                 <!-- Feature Cards -->
                 <div class="space-y-4 w-full max-w-sm">
-                    <button onclick="showPage('modules', event)" class="w-full p-6 neumorphism rounded-2xl font-semibold text-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-4 glow-effect slide-in-up group" style="animation-delay: 0.5s;">
+                    <button onclick="showPage('mode-selection', event)" class="w-full p-6 neumorphism rounded-2xl font-semibold text-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-4 glow-effect slide-in-up group" style="animation-delay: 0.5s;">
                         <span class="text-3xl group-hover:scale-110 transition-transform duration-300">🚀</span>
                         <span id="start-learning-btn" class="text-lg">Start Learning</span>
-                        <span class="text-sm opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">→</span>
-                    </button>
-                    <button onclick="showPage('girls-mode', event)" class="w-full p-6 neumorphism rounded-2xl font-semibold text-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-4 glow-effect slide-in-up group" style="animation-delay: 0.7s;">
-                        <span class="text-3xl group-hover:scale-110 transition-transform duration-300">🌸</span>
-                        <span id="womens-mode-btn" class="text-lg">Women's Mode</span>
                         <span class="text-sm opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">→</span>
                     </button>
                     <button onclick="showPage('ai-assistant', event)" class="w-full p-6 neumorphism rounded-2xl font-semibold text-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-4 glow-effect slide-in-up group" style="animation-delay: 0.9s;">
@@ -620,6 +620,79 @@
             <footer class="relative z-10 px-6 py-6 text-center">
                 <p class="text-sm text-white font-medium" id="footer-text">Empowering financial literacy across India</p>
             </footer>
+        </div>
+
+        <!-- Mode Selection Page -->
+        <div id="mode-selection" class="hidden page px-6 py-6 pb-32 relative overflow-hidden">
+            <!-- Animated Background -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 right-10 w-48 h-48 bg-gradient-to-r from-blue-500/15 to-indigo-500/15 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-40 left-10 w-40 h-40 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+                </div>
+
+            <div class="max-w-sm mx-auto relative z-10">
+                <!-- Header -->
+                <div class="text-center mb-8 slide-in-down">
+                    <div class="w-20 h-20 neumorphism rounded-full flex items-center justify-center mx-auto mb-4 glow-effect">
+                        <span class="text-3xl">🎯</span>
+                    </div>
+                    <h1 class="text-3xl font-bold gradient-text mb-2" id="mode-selection-title">Choose Your Learning Path</h1>
+                    <p class="text-gray-600 text-sm" id="mode-selection-subtitle">Select the mode that best fits your learning style</p>
+                </div>
+
+                <!-- Mode Selection Cards -->
+                <div class="space-y-4">
+                    <!-- General Learning Mode -->
+                    <button onclick="selectMode('general')" class="w-full p-6 neumorphism rounded-2xl font-semibold text-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-between glow-effect slide-in-up group" style="animation-delay: 0.2s;">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-white text-2xl">📚</span>
+                        </div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-bold" id="general-mode-title">General Learning</h3>
+                                <p class="text-sm text-gray-600" id="general-mode-desc">Comprehensive financial education for everyone</p>
+                            </div>
+                        </div>
+                        <span class="text-sm opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">→</span>
+                    </button>
+
+                    <!-- Women's Empowerment Mode -->
+                    <button onclick="selectMode('women')" class="w-full p-6 neumorphism rounded-2xl font-semibold text-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-between glow-effect slide-in-up group" style="animation-delay: 0.4s;">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-white text-2xl">🌸</span>
+                        </div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-bold" id="women-mode-title">Women's Empowerment</h3>
+                                <p class="text-sm text-gray-600" id="women-mode-desc">Specialized content for women's financial independence</p>
+                            </div>
+                        </div>
+                        <span class="text-sm opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">→</span>
+                    </button>
+
+                    <!-- Business & Entrepreneurship Mode -->
+                    <button onclick="selectMode('business')" class="w-full p-6 neumorphism rounded-2xl font-semibold text-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-between glow-effect slide-in-up group" style="animation-delay: 0.6s;">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-white text-2xl">💼</span>
+                        </div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-bold" id="business-mode-title">Business & Entrepreneurship</h3>
+                                <p class="text-sm text-gray-600" id="business-mode-desc">Learn to start and grow your own business</p>
+                        </div>
+                    </div>
+                        <span class="text-sm opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">→</span>
+                    </button>
+                </div>
+
+                <!-- Back Button -->
+                <div class="mt-8 text-center">
+                    <button onclick="showPage('landing', event)" class="px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors duration-300">
+                        <span class="text-sm">← Back to Home</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Learning Modules Page -->
@@ -643,23 +716,23 @@
 
                 <!-- Points Display -->
                 <div class="card mb-10">
-                        <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-5">
                             <div class="w-16 h-16 neumorphism rounded-xl flex items-center justify-center glow-effect">
                                 <span class="text-white text-2xl">⭐</span>
-                            </div>
+                                </div>
                             <div>
                                 <span class="font-bold text-gray-800 text-xl" id="points">0 Points</span>
                                 <p class="text-xs text-gray-600">Keep learning!</p>
+                            </div>
                         </div>
-                    </div>
                         <div class="text-right">
                             <div class="w-12 h-12 neumorphism rounded-full flex items-center justify-center glow-effect">
                                 <span class="text-white text-lg">🔥</span>
-                        </div>
+                            </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                 <!-- Modules Grid -->
                 <div class="space-y-6">
@@ -670,25 +743,25 @@
                                 <div class="flex items-center space-x-5 mb-4">
                                     <div class="w-16 h-16 neumorphism rounded-xl flex items-center justify-center glow-effect group-hover:scale-110 transition-transform duration-300">
                                         <span class="text-white text-2xl">🎉</span>
-                        </div>
+                            </div>
                                     <h3 class="font-bold text-gray-800 text-2xl" id="module-1-title">Saving for Festivals</h3>
-                        </div>
+                                </div>
                                 <p class="text-gray-600 text-base mb-6 leading-relaxed" id="module-1-desc">Learn how to budget and save for special occasions</p>
-                    </div>
+                            </div>
                             <div class="w-18 h-18 neumorphism rounded-full flex items-center justify-center glow-effect group-hover:scale-110 transition-transform duration-300">
                                 <span class="text-white text-2xl">✓</span>
-                </div>
-            </div>
+                        </div>
+                    </div>
                             <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
                                 <div class="w-3 h-3 bg-emerald-400 rounded-full glow-effect"></div>
                                 <span class="text-sm font-semibold text-emerald-400 uppercase tracking-wide" id="module-1-status">completed</span>
-                            </div>
+                </div>
                             <div class="w-10 h-10 neumorphism rounded-full flex items-center justify-center glow-effect">
                                 <span class="text-white text-sm">▶</span>
-                                </div>
-                            </div>
                         </div>
+                    </div>
+                </div>
 
                     <!-- Module 2 - In Progress -->
                     <div class="card cursor-pointer transform hover:scale-105 transition-all duration-300 glow-effect" onclick="openModule(2)">
@@ -699,13 +772,13 @@
                                         <span class="text-white text-xl">🏍️</span>
                             </div>
                                     <h3 class="font-bold text-gray-800 text-xl" id="module-2-title">Buying a Scooter</h3>
-                                </div>
+                        </div>
                                 <p class="text-gray-600 text-sm mb-5" id="module-2-desc">Smart purchasing decisions for transportation</p>
                             </div>
                             <div class="w-16 h-16 neumorphism rounded-full flex items-center justify-center glow-effect">
                                 <span class="text-white text-2xl">▶</span>
                         </div>
-                            </div>
+                        </div>
                             <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
                                 <div class="w-3 h-3 bg-blue-400 rounded-full animate-pulse glow-effect"></div>
@@ -724,23 +797,23 @@
                                 <div class="flex items-center space-x-4 mb-3">
                                     <div class="w-14 h-14 neumorphism rounded-xl flex items-center justify-center">
                                         <span class="text-gray-500 text-xl">🔒</span>
-                        </div>
+                            </div>
                                     <h3 class="font-bold text-gray-500 text-xl" id="module-3-title">Loans 101</h3>
-                    </div>
+                            </div>
                                 <p class="text-gray-600 text-sm mb-5" id="module-3-desc">Understanding different types of loans and interest</p>
-                </div>
+                        </div>
                             <div class="w-16 h-16 neumorphism rounded-full flex items-center justify-center">
                                 <span class="text-gray-500 text-2xl">🔒</span>
                             </div>
-                        </div>
+                            </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
                                 <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
                                 <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide" id="module-3-status">locked</span>
-                            </div>
-                            <div class="text-xs text-gray-600">Complete previous modules</div>
                         </div>
-                    </div>
+                            <div class="text-xs text-gray-600">Complete previous modules</div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -750,7 +823,7 @@
             <div class="max-w-sm mx-auto">
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-6">
-                    <div class="flex items-center space-x-3">
+                        <div class="flex items-center space-x-3">
                         <div class="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-400 rounded-2xl flex items-center justify-center">
                             <span class="text-white text-xl">🌸</span>
                             </div>
@@ -759,7 +832,7 @@
                     <div class="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full flex items-center justify-center">
                         <span class="text-white text-lg">👩</span>
                         </div>
-                            </div>
+                    </div>
 
                 <!-- Main Content Card -->
                 <div class="card mb-6 bg-gradient-to-r from-pink-200 to-rose-200 border-pink-300 cursor-pointer" onclick="openWomenModule(1)">
@@ -772,13 +845,13 @@
                                     <div class="bg-pink-500 h-2 rounded-full" style="width: 25%"></div>
                             </div>
                                 <span class="text-xs text-pink-600 font-medium" id="progress-text">25% complete</span>
-                        </div>
                             </div>
+                        </div>
                         <div class="w-16 h-16 bg-gradient-to-br from-pink-300 to-rose-300 rounded-2xl flex items-center justify-center ml-4">
                             <span class="text-2xl">🛍️</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 <!-- Today's Progress Section -->
                 <div class="mb-6">
@@ -792,8 +865,8 @@
                             </div>
                                 <p class="text-sm font-medium text-gray-700 mb-1">Lessons</p>
                                 <p class="text-lg font-bold text-pink-600">2/8</p>
-                        </div>
                     </div>
+                </div>
 
                         <!-- Badges Card -->
                         <div class="card bg-pink-100 border-pink-200">
@@ -803,36 +876,36 @@
                             </div>
                                 <p class="text-sm font-medium text-gray-700 mb-1">Badges</p>
                                 <p class="text-lg font-bold text-pink-600">2</p>
+                        </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
+                            </div>
 
                 <!-- My Story Card -->
                 <div class="card mb-4 bg-pink-100 border-pink-200">
                         <div class="flex items-center space-x-3">
                         <div class="w-12 h-12 bg-gradient-to-br from-pink-300 to-rose-300 rounded-full flex items-center justify-center flex-shrink-0">
                             <span class="text-pink-700 text-lg">👩</span>
-                            </div>
+                        </div>
                         <div class="flex-1">
                             <h4 class="font-semibold text-gray-800 text-sm mb-1">My Story</h4>
                             <p class="text-gray-600 text-xs leading-relaxed">I used to shop without a plan, but now I save money while buying what I need!</p>
-                            </div>
                         </div>
-                            </div>
+                    </div>
+                </div>
 
                 <!-- Tips & Tricks Card -->
                 <div class="card mb-6 bg-pink-100 border-pink-200">
                     <div class="flex items-center space-x-3">
                         <div class="w-12 h-12 bg-gradient-to-br from-pink-300 to-rose-300 rounded-full flex items-center justify-center flex-shrink-0">
                             <span class="text-pink-700 text-lg">💰</span>
-                        </div>
+                            </div>
                         <div class="flex-1">
                             <h4 class="font-semibold text-gray-800 text-sm mb-1">Tips & Tricks</h4>
                             <p class="text-gray-600 text-xs">Smart shopping strategies for women</p>
                         </div>
-                    </div>
-                </div>
+                            </div>
+                        </div>
 
                 <!-- Additional Modules -->
                     <div class="space-y-3">
@@ -854,27 +927,27 @@
                         <div class="flex items-start justify-between mb-3">
                             <h3 class="font-semibold text-gray-800 text-sm">Saving for Children's Education</h3>
                             <span class="text-rose-400 text-lg">▶</span>
-                            </div>
+                        </div>
                         <p class="text-gray-600 text-xs mb-3">Plan for your children's future</p>
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-medium text-rose-500 uppercase tracking-wide">available</span>
                             <div class="w-6 h-6 bg-rose-300 rounded-full flex items-center justify-center">
                                 <span class="text-rose-800 text-xs">▶</span>
                         </div>
-                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Rewards Page -->
-        <div id="rewards" class="hidden page bg-gradient-to-br from-orange-100 to-blue-100 px-4 py-4 pb-32">
+        <div id="rewards" class="hidden page bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100 px-4 py-4 pb-32">
             <div class="max-w-sm mx-auto">
                 <!-- Header -->
                 <div class="text-center mb-6">
                     <div class="flex items-center justify-center space-x-3 mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-orange-300 to-blue-300 rounded-2xl flex items-center justify-center">
-                            <span class="text-orange-800 text-xl">🎁</span>
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-300 to-emerald-300 rounded-2xl flex items-center justify-center">
+                            <span class="text-green-800 text-xl">🎁</span>
                         </div>
                         <h1 class="text-2xl font-bold text-gray-800">Points & Rewards</h1>
                     </div>
@@ -884,7 +957,7 @@
                 <!-- Points Profile Card -->
                 <div class="card mb-6">
                     <div class="text-center">
-                        <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-blue-400 rounded-3xl flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-400 rounded-3xl flex items-center justify-center mx-auto mb-4">
                             <span class="text-white text-2xl">🏆</span>
                         </div>
                         <h2 class="text-xl font-bold text-gray-800 mb-2">Your Progress</h2>
@@ -899,7 +972,7 @@
                                 <span>0%</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-gradient-to-r from-orange-400 to-blue-400 h-2 rounded-full" style="width: 0%"></div>
+                                <div class="bg-gradient-to-r from-green-400 to-emerald-400 h-2 rounded-full" style="width: 0%"></div>
                             </div>
                         </div>
                         <div class="bg-gradient-to-r from-orange-50 to-blue-50 rounded-xl p-3">
@@ -1070,7 +1143,7 @@
                                 </div>
                                 <span class="text-blue-600">→</span>
                             </div>
-                        </button>
+                </button>
                         <button onclick="openCalculator('savings')" class="w-full p-3 bg-gradient-to-r from-green-100 to-teal-100 rounded-xl border border-green-200 hover:scale-105 transition-all duration-300">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
@@ -1082,7 +1155,7 @@
                                 </div>
                                 <span class="text-green-600">→</span>
                             </div>
-                        </button>
+                </button>
                         <button onclick="openCalculator('budget')" class="w-full p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl border border-purple-200 hover:scale-105 transition-all duration-300">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
@@ -1094,7 +1167,7 @@
                                 </div>
                                 <span class="text-purple-600">→</span>
                             </div>
-                        </button>
+                </button>
                         <button onclick="openCalculator('investment')" class="w-full p-3 bg-gradient-to-r from-orange-100 to-red-100 rounded-xl border border-orange-200 hover:scale-105 transition-all duration-300">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
@@ -1106,7 +1179,7 @@
                                 </div>
                                 <span class="text-orange-600">→</span>
                             </div>
-                        </button>
+                </button>
                     </div>
                 </div>
 
@@ -1580,6 +1653,15 @@
                 'savings-calculator': 'Savings Goal Calculator',
                 'budget-planner': 'Monthly Budget Planner',
                 'investment-calculator': 'Investment Returns Calculator',
+                // Mode Selection translations
+                'mode-selection-title': 'Choose Your Learning Path',
+                'mode-selection-subtitle': 'Select the mode that best fits your learning style',
+                'general-mode-title': 'General Learning',
+                'general-mode-desc': 'Comprehensive financial education for everyone',
+                'women-mode-title': 'Women\'s Empowerment',
+                'women-mode-desc': 'Specialized content for women\'s financial independence',
+                'business-mode-title': 'Business & Entrepreneurship',
+                'business-mode-desc': 'Learn to start and grow your own business',
                 // Girls Mode specific translations
                 'shopping-while-saving': 'Shopping While Saving',
                 'chapter-1': 'Chapter 1',
@@ -1705,6 +1787,15 @@
                 'savings-calculator': 'बचत लक्ष्य कैलकुलेटर',
                 'budget-planner': 'मासिक बजट योजनाकार',
                 'investment-calculator': 'निवेश रिटर्न कैलकुलेटर',
+                // Mode Selection translations
+                'mode-selection-title': 'अपना सीखने का रास्ता चुनें',
+                'mode-selection-subtitle': 'वह मोड चुनें जो आपकी सीखने की शैली के अनुकूल हो',
+                'general-mode-title': 'सामान्य सीखना',
+                'general-mode-desc': 'सभी के लिए व्यापक वित्तीय शिक्षा',
+                'women-mode-title': 'महिला सशक्तिकरण',
+                'women-mode-desc': 'महिलाओं की वित्तीय आजादी के लिए विशेष सामग्री',
+                'business-mode-title': 'व्यापार और उद्यमिता',
+                'business-mode-desc': 'अपना व्यापार शुरू करना और बढ़ाना सीखें',
                 // Girls Mode specific translations
                 'shopping-while-saving': 'बचत करते हुए खरीदारी',
                 'chapter-1': 'अध्याय 1',
@@ -2078,7 +2169,7 @@
 
         function showPage(pageId, event = null) {
             // Hide all pages
-            document.querySelectorAll('[id="landing"], [id="modules"], [id="girls-mode"], [id="leaderboard"], [id="rewards"], [id="ai-assistant"], [id="local-business"]').forEach(page => {
+            document.querySelectorAll('[id="landing"], [id="mode-selection"], [id="modules"], [id="girls-mode"], [id="leaderboard"], [id="rewards"], [id="ai-assistant"], [id="local-business"]').forEach(page => {
                 page.classList.add('hidden');
             });
             
@@ -2110,6 +2201,26 @@
             // Update Leaderboard if it's the current page
             if (pageId === 'leaderboard') {
                 updateLeaderboard();
+            }
+        }
+
+        function selectMode(mode) {
+            // Store the selected mode
+            localStorage.setItem('selectedMode', mode);
+            
+            // Navigate to appropriate page based on mode
+            switch(mode) {
+                case 'general':
+                    showPage('modules', null);
+                    break;
+                case 'women':
+                    showPage('girls-mode', null);
+                    break;
+                case 'business':
+                    showPage('local-business', null);
+                    break;
+                default:
+                    showPage('modules', null);
             }
         }
 
